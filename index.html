@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      JobSkillShare (EDTECH4D) — Job-ready IT skills with hands-on labs
+    </title>
+    <!--
+  JSS Homepage — v3 (premium pass)
+  Base: Kaneeza Batool's Week 2 structure (nav, hero, steps, programs,
+  coming-soon, preview, stats/testimonials, pricing, enterprise, final CTA)
+  is kept as the foundation, per team direction.
+
+  What changed in this pass, and why:
+  - Hero visual: replaced with the rotating-tag orbit around the "JSS" mark
+    from the original site (screenshot reference), rebuilt smoother with a
+    3-layer counter-rotation technique so the pill labels stay upright while
+    orbiting, plus a soft pulsing core glow. Respects prefers-reduced-motion.
+  - The Week 2 terminal mockup is *not* deleted — it's relocated into the
+    "Preview our content" section (id="preview") and made to actually type,
+    switching content per preview-item, so the hands-on-labs proof-of-concept
+    lives in one place instead of being duplicated between hero and preview.
+  - Color palette is locked to the brand reference (Blue #2E75B6,
+    Navy #1F3864, Ice Blue #D5E3EF) — see style.css :root for the derived
+    tint/shade scale used everywhere else.
+  - Added micro-interactions: hover elevation + top-edge highlight on step
+    cards, glow-on-hover on program cards, glassmorphic enterprise panel,
+    scroll reveal (staggered for grids), animated "coming soon" form
+    confirmation, live-typing terminal.
+-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header / nav -->
+    <header>
+      <div class="wrap nav">
+        <a class="logo" href="index.html">
+          <span class="parent">EDTECH4D</span>
+          <span class="main">JobSkill<span>Share</span></span>
+        </a>
+        <nav class="menu" id="mainMenu">
+          <a href="index.html">Home</a>
+          <a href="programs.html">Programs</a>
+          <a href="index.html#pricing">Pricing</a>
+          <a href="index.html#stories">Success Stories</a>
+          <div class="nav-actions mobile-show">
+            <a class="btn btn-ghost" href="#">Log in</a>
+            <a class="btn btn-primary" href="index.html#pricing">Get started</a>
+          </div>
+        </nav>
+        <div class="nav-actions">
+          <a class="btn btn-ghost" href="#">Log in</a>
+          <a class="btn btn-primary" href="index.html#pricing">Get started</a>
+        </div>
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-divider" aria-hidden="true"></div>
+      <div class="wrap">
+        <div class="hero-text">
+          <h1>Job-ready IT skills with <em>hands-on labs</em></h1>
+          <p class="lead">
+            Step-by-step programs designed around real job tasks. Practice in
+            real Windows, Linux, and cloud environments, online 24/7.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary btn-big" href="programs.html"
+              >Explore programs</a
+            >
+            <a class="preview-link" href="#preview"
+              ><span class="play">&#9654;</span> Watch 2-min preview</a
+            >
+          </div>
+          <div class="chips">
+            <span class="chip">Hands-on labs &amp; simulations</span>
+            <span class="chip">Job-specific programs</span>
+            <span class="chip">Self-paced, 24/7</span>
+          </div>
+        </div>
+
+        <!-- Rotating orbit hero visual -->
+        <div class="hero-visual">
+          <div class="orbit" aria-hidden="true">
+            <div class="orbit-ring r1"></div>
+            <div class="orbit-ring r2"></div>
+            <div class="orbit-ring r3"></div>
+
+            <div class="orbit-core"><span>JSS</span></div>
+
+            <div class="orbit-track">
+              <div class="orbit-tag" style="--fix: 0deg">
+                <div
+                  class="tag-fix"
+                  style="
+                    transform: translate(-50%, -50%) rotate(0deg)
+                      translate(150px) rotate(0deg);
+                  "
+                >
+                  <span class="tag-spin"
+                    ><span class="pill"
+                      ><span class="ic">&#9654;</span> Courses</span
+                    ></span
+                  >
+                </div>
+              </div>
+              <div class="orbit-tag">
+                <div
+                  class="tag-fix"
+                  style="
+                    transform: translate(-50%, -50%) rotate(90deg)
+                      translate(150px) rotate(-90deg);
+                  "
+                >
+                  <span class="tag-spin"
+                    ><span class="pill"
+                      ><span class="ic">&#128193;</span> Programs</span
+                    ></span
+                  >
+                </div>
+              </div>
+              <div class="orbit-tag">
+                <div
+                  class="tag-fix"
+                  style="
+                    transform: translate(-50%, -50%) rotate(180deg)
+                      translate(150px) rotate(-180deg);
+                  "
+                >
+                  <span class="tag-spin"
+                    ><span class="pill"
+                      ><span class="ic">&#129514;</span> Labs</span
+                    ></span
+                  >
+                </div>
+              </div>
+              <div class="orbit-tag">
+                <div
+                  class="tag-fix"
+                  style="
+                    transform: translate(-50%, -50%) rotate(270deg)
+                      translate(150px) rotate(-270deg);
+                  "
+                >
+                  <span class="tag-spin"
+                    ><span class="pill"
+                      ><span class="ic">&#10022;</span> AI Help</span
+                    ></span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="orbit-dot" style="top: 8%; left: 62%"></div>
+            <div class="orbit-dot" style="top: 70%; left: 14%"></div>
+            <div class="orbit-dot" style="top: 32%; left: 88%"></div>
+            <div class="orbit-dot" style="top: 82%; left: 68%"></div>
+          </div>
+          <div class="orbit-caption">
+            <h4>One connected learning path</h4>
+            <p>
+              60,000+ members from 120+ countries<br /><span class="flow"
+                >Learn &rarr; Practice &rarr; Apply</span
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section>
+      <div class="wrap">
+        <div class="eyebrow">How it works</div>
+        <h2 class="sec-title">Three steps to your first IT role</h2>
+        <p class="sec-sub">
+          No guessing what to learn next. Every program is a roadmap that takes
+          you from zero to job-ready.
+        </p>
+        <div class="steps reveal-stagger">
+          <div class="step">
+            <div class="num">1</div>
+            <h3>Choose a program</h3>
+            <p>
+              Pick the career path that fits you: IT Support, Networking, Cloud,
+              Cybersecurity, or AI &amp; Automation.
+            </p>
+          </div>
+          <div class="step">
+            <div class="num">2</div>
+            <h3>Learn and practice in labs</h3>
+            <p>
+              Follow the roadmap course by course, and practice every skill in
+              real hands-on lab environments.
+            </p>
+          </div>
+          <div class="step">
+            <div class="num">3</div>
+            <h3>Learn anytime, 24/7</h3>
+            <p>
+              All content is self-paced. Study when it works for you, repeat any
+              lab until you have mastered it.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Programs -->
+    <section class="programs" id="programs">
+      <div class="wrap">
+        <div class="eyebrow">Programs</div>
+        <h2 class="sec-title">Choose your career path</h2>
+        <p class="sec-sub">
+          Certificate programs built around real job tasks, with hands-on labs
+          included in every one.
+        </p>
+        <div class="prog-grid reveal-stagger">
+          <div class="prog">
+            <div class="icon">&#128421;</div>
+            <h3>Modern IT Support Certificate Program</h3>
+            <p>Best for: Help Desk, IT Support, and Service Desk roles.</p>
+            <div class="meta">
+              <span class="tag lvl">Beginner</span
+              ><span class="tag">~90 hours</span>
+            </div>
+            <a class="open" href="programs.html">Open program &rarr;</a>
+          </div>
+          <div class="prog">
+            <div class="icon">&#128736;</div>
+            <h3>Systems Engineer Certificate Program</h3>
+            <p>
+              Best for: SysAdmin, Junior Systems Engineer, and Infrastructure
+              roles.
+            </p>
+            <div class="meta">
+              <span class="tag lvl">Intermediate</span
+              ><span class="tag">~110 hours</span>
+            </div>
+            <a class="open" href="programs.html">Open program &rarr;</a>
+          </div>
+          <div class="prog">
+            <div class="icon">&#9729;</div>
+            <h3>Cloud Engineer Certificate Program</h3>
+            <p>
+              Best for: Cloud Admin and Cloud Engineer roles on Azure and AWS.
+            </p>
+            <div class="meta">
+              <span class="tag lvl">Intermediate</span
+              ><span class="tag">~120 hours</span>
+            </div>
+            <a class="open" href="programs.html">Open program &rarr;</a>
+          </div>
+          <div class="prog">
+            <div class="icon">&#128274;</div>
+            <h3>Cybersecurity Analyst Certificate Program</h3>
+            <p>Best for: SOC Analyst and entry security roles.</p>
+            <div class="meta">
+              <span class="tag lvl">Intermediate</span
+              ><span class="tag">~115 hours</span>
+            </div>
+            <a class="open" href="programs.html">Open program &rarr;</a>
+          </div>
+        </div>
+        <a class="view-all" href="programs.html">View all programs &rarr;</a>
+      </div>
+    </section>
+
+    <!-- Coming soon -->
+    <section class="soon">
+      <div class="wrap">
+        <div class="box reveal">
+          <div>
+            <h3>Coming soon: Web Development &amp; Data Science</h3>
+            <p>Be the first to know when these programs launch.</p>
+          </div>
+          <div>
+            <form id="notifyForm">
+              <input
+                type="email"
+                id="notifyEmail"
+                placeholder="Your email address"
+                aria-label="Email address"
+                required
+              />
+              <button type="submit">Notify me</button>
+            </form>
+            <div class="thanks" id="notifyThanks" hidden>
+              &#10003; You're on the list — we'll email you at launch.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Preview / real lab demo (terminal lives here now) -->
+    <section class="preview" id="preview">
+      <div class="wrap">
+        <div class="eyebrow">Preview our content</div>
+        <h2 class="sec-title">See a real lab in action</h2>
+        <p class="sec-sub">
+          Short walkthroughs of the labs and tools you get with every program.
+        </p>
+        <div class="preview-grid reveal">
+          <div class="preview-main" id="previewMain">
+            <span class="badge">Labs included</span>
+            <div
+              class="term"
+              aria-label="Example of a JSS hands-on lab session"
+            >
+              <div class="term-bar">
+                <i></i><i></i><i></i
+                ><span
+                  ><span class="live-dot"></span
+                  ><span id="termTitle"
+                    >jss-lab &mdash; comptia-aplus</span
+                  ></span
+                >
+              </div>
+              <div class="term-body" id="termBody"></div>
+            </div>
+            <div class="cap" id="previewCaption">CompTIA A+ Lab Demo</div>
+          </div>
+          <div class="preview-list" id="previewList">
+            <div
+              class="preview-item active"
+              data-title="CompTIA A+ Lab Demo"
+              data-term="jss-lab — comptia-aplus"
+            >
+              <span class="dot"></span> CompTIA A+ Lab Demo
+            </div>
+            <div
+              class="preview-item"
+              data-title="Roles and Careers in Power BI"
+              data-term="jss-lab — power-bi-roles"
+            >
+              <span class="dot"></span> Roles and Careers in Power BI
+            </div>
+            <div
+              class="preview-item"
+              data-title="LinkedIn Profile Optimization"
+              data-term="jss-lab — career-prep"
+            >
+              <span class="dot"></span> LinkedIn Profile Optimization
+            </div>
+            <div
+              class="preview-item"
+              data-title="Project: OS &amp; DNS Basics"
+              data-term="jss-lab — os-dns-fundamentals"
+            >
+              <span class="dot"></span> Project: OS &amp; DNS Basics
+            </div>
+            <div
+              class="preview-item"
+              data-title="Route 53 Demo"
+              data-term="jss-lab — aws-route53"
+            >
+              <span class="dot"></span> Route 53 Demo
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats + testimonials -->
+    <section id="stories">
+      <div class="wrap">
+        <div class="eyebrow">Career outcomes</div>
+        <h2 class="sec-title">Learners who switched careers with JSS</h2>
+        <p class="sec-sub">Real numbers, real members, real job outcomes.</p>
+        <div class="stats reveal-stagger">
+          <div class="stat">
+            <b data-count="50000" data-suffix="+">0</b
+            ><span>Active learners</span>
+          </div>
+          <div class="stat">
+            <b data-count="120" data-suffix="+">0</b><span>Countries</span>
+          </div>
+          <div class="stat">
+            <b data-count="500" data-suffix="+">0</b
+            ><span>Hours of lab content</span>
+          </div>
+        </div>
+        <div class="stat-caption">
+          Membership and content figures as reported on JobSkillShare, 2026.
+        </div>
+        <div class="quotes reveal-stagger">
+          <div class="quote">
+            <p>
+              "The hands-on labs and real-world scenarios prepared me perfectly
+              for my current role."
+            </p>
+            <div class="who">
+              <div class="av">AG</div>
+              <div><b>Amit G.</b><span>Australia</span></div>
+            </div>
+          </div>
+          <div class="quote">
+            <p>
+              "I went from zero IT background to my first support role by
+              following one roadmap start to finish."
+            </p>
+            <div class="who">
+              <div class="av">ZN</div>
+              <div>
+                <b>Zeeshan B. Nasir</b
+                ><span>Information Technology Technician</span>
+              </div>
+            </div>
+          </div>
+          <div class="quote">
+            <p>
+              "The labs made the difference in interviews. I could talk about
+              things I had actually done."
+            </p>
+            <div class="who">
+              <div class="av">MS</div>
+              <div>
+                <b>Manjinder Singh Rahal</b
+                ><span>Information Technology Specialist</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+      <div class="wrap">
+        <div class="eyebrow">Pricing</div>
+        <h2 class="sec-title">Start free. Upgrade when you are ready.</h2>
+        <p class="sec-sub">No hidden fees. Cancel anytime.</p>
+        <div class="plans reveal-stagger">
+          <div class="plan">
+            <h3>Free</h3>
+            <div class="price">$0<small> / 3 months</small></div>
+            <ul>
+              <li>IT Support training</li>
+              <li>Systems &amp; networking basics</li>
+              <li>Resume building &amp; job prep</li>
+              <li>JSS community access</li>
+            </ul>
+            <a class="btn btn-ghost" href="#">Start free</a>
+          </div>
+          <div class="plan featured">
+            <div class="flag">MOST POPULAR</div>
+            <h3>Premium</h3>
+            <div class="price">$50<small> / month</small></div>
+            <ul>
+              <li>All 6 certificate programs</li>
+              <li>Full access to premium labs</li>
+              <li>Complete video course library</li>
+              <li>All AI-powered career tools</li>
+            </ul>
+            <a class="btn btn-primary" href="#">Go Premium</a>
+          </div>
+          <div class="plan">
+            <h3>Premium Yearly</h3>
+            <div class="price">$549<small> / year</small></div>
+            <ul>
+              <li>Everything in Premium Monthly</li>
+              <li>8% discount vs monthly billing</li>
+              <li>Priority support</li>
+              <li>Resume review &amp; exclusive workshops</li>
+            </ul>
+            <a class="btn btn-ghost" href="#">Get yearly</a>
+          </div>
+        </div>
+        <div class="pricing-note">
+          Need team or bulk licenses?
+          <a href="#">Contact sales</a> &nbsp;&middot;&nbsp;
+          <a href="#">See full plan comparison &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enterprise -->
+    <section class="enterprise">
+      <div class="wrap">
+        <div class="ent-card reveal">
+          <div>
+            <div class="eyebrow" style="color: #8fb8e0">Enterprise</div>
+            <h2>Business inquiries &amp; bulk licensing</h2>
+            <p>
+              JobSkillShare provides skills-based training with practical labs
+              for organizations of all sizes.
+            </p>
+            <div class="ent-list">
+              <div class="row">
+                <div>
+                  <b>Businesses &amp; employers</b>Upskill teams with job-role
+                  training and hands-on labs.
+                </div>
+              </div>
+              <div class="row">
+                <div>
+                  <b>Education institutions</b>Complement academics with real IT
+                  labs and projects.
+                </div>
+              </div>
+              <div class="row">
+                <div>
+                  <b>Government programs</b>Scalable training with bulk
+                  licensing and reporting.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ent-form">
+            <h4>Contact sales</h4>
+            <div class="contact">&#9993; sales@jobskillshare.org</div>
+            <a class="btn btn-primary" href="#">Get bulk license quote</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final">
+      <div class="wrap">
+        <h2>Ready to start your IT career?</h2>
+        <p>
+          Join 50,000+ learners building job-ready skills with hands-on
+          practice.
+        </p>
+        <a class="btn btn-primary btn-big" href="#">Create free account</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <div class="foot">
+          <div>
+            <a class="logo" href="index.html">
+              <span class="parent" style="color: #9db6d4">EDTECH4D</span>
+              <span class="main" style="color: #fff"
+                >JobSkill<span style="color: #7db4f0">Share</span></span
+              >
+            </a>
+            <p style="margin-top: 12px; max-width: 300px">
+              JobSkillShare is the Pakistan branch of EDTECH4D, an international
+              IT skills training company. Same team, same programs, two names.
+            </p>
+            <p style="margin-top: 10px; max-width: 280px">
+              Join 60,000+ members from 120+ countries.
+            </p>
+          </div>
+          <div>
+            <h4>Programs</h4>
+            <a href="#">IT Support</a><a href="#">Systems Engineer</a
+            ><a href="#">Cloud Engineer</a><a href="#">Cybersecurity</a>
+          </div>
+          <div>
+            <h4>Company</h4>
+            <a href="#">Mission</a><a href="#">Membership</a
+            ><a href="#">Free Interview Prep</a><a href="#">Terms</a>
+          </div>
+          <div>
+            <h4>Support</h4>
+            <a href="#">support@jobskillshare.org</a
+            ><a href="#">sales@jobskillshare.org</a
+            ><a href="#">Community Discord</a>
+          </div>
+        </div>
+        <div class="copyright">
+          &copy; 2026 JobSkillShare. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

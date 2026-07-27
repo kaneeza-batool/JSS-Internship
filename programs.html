@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programs &amp; Courses — JobSkillShare (EDTECH4D)</title>
+    <meta
+      name="description"
+      content="Certificate programs and individual IT courses built around real job tasks, with hands-on labs included. Choose your career path or pick a focused course."
+    />
+    <!--
+  Programs page v2 — rebuilt per feedback:
+  1) Hero no longer uses the orbit graphic (that's the homepage's signature
+     moment — repeating it here read as inconsistent/cluttered). Replaced
+     with a glass "catalog snapshot" panel, reusing the same glassmorphism
+     treatment already established on the homepage (.term, .ent-form), so
+     the two pages read as one system instead of two different ideas.
+  2) Catalog expanded from 6 to 10 certificate programs, and a full
+     "Individual Courses" section was added (search + category filter,
+     18 courses) — this was present in the original site and was missing
+     here entirely.
+  All colors/type/spacing/radius/shadow tokens are unchanged from style.css.
+-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header / nav (identical to homepage) -->
+    <header>
+      <div class="wrap nav">
+        <a class="logo" href="index.html">
+          <span class="parent">EDTECH4D</span>
+          <span class="main">JobSkill<span>Share</span></span>
+        </a>
+        <nav class="menu" id="mainMenu">
+          <a href="index.html">Home</a>
+          <a href="programs.html">Programs</a>
+          <a href="index.html#pricing">Pricing</a>
+          <a href="index.html#stories">Success Stories</a>
+          <div class="nav-actions mobile-show">
+            <a class="btn btn-ghost" href="#">Log in</a>
+            <a class="btn btn-primary" href="index.html#pricing">Get started</a>
+          </div>
+        </nav>
+        <div class="nav-actions">
+          <a class="btn btn-ghost" href="#">Log in</a>
+          <a class="btn btn-primary" href="index.html#pricing">Get started</a>
+        </div>
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Page hero -->
+    <section class="page-hero">
+      <div class="hero-divider" aria-hidden="true"></div>
+      <div class="wrap">
+        <div class="page-hero-inner">
+          <div class="breadcrumb"><a href="index.html">Home</a> / Programs &amp; Courses</div>
+          <h1>Certificate programs and courses built around real job tasks</h1>
+          <p class="lead">
+            Ten career paths and eighteen focused courses, each backed by
+            hands-on labs — not a loose playlist. Follow a full roadmap or
+            pick a single skill to sharpen.
+          </p>
+          <div class="page-hero-stats">
+            <div><b>10</b><span>Certificate programs</span></div>
+            <div><b>18</b><span>Individual courses</span></div>
+            <div><b>500+</b><span>Hours of labs</span></div>
+            <div><b>50,000+</b><span>Active learners</span></div>
+          </div>
+          <div class="page-hero-cta">
+            <a class="btn btn-primary btn-big" href="#catalog">Browse programs</a>
+            <a class="btn btn-ghost" href="#courses">Browse courses</a>
+          </div>
+        </div>
+
+        <div class="hero-snapshot">
+          <div class="hero-snapshot-head">
+            <span>Catalog snapshot</span>
+            <span class="live"><i></i> Updated 2026</span>
+          </div>
+          <div class="hs-row">
+            <div class="hs-ic">&#128421;</div>
+            <div>IT Support &amp; Help Desk</div>
+            <b>1 program</b>
+          </div>
+          <div class="hs-row">
+            <div class="hs-ic">&#9729;</div>
+            <div>Cloud &amp; Systems</div>
+            <b>4 programs</b>
+          </div>
+          <div class="hs-row">
+            <div class="hs-ic">&#128274;</div>
+            <div>Security &amp; Networking</div>
+            <b>2 programs</b>
+          </div>
+          <div class="hs-row">
+            <div class="hs-ic">&#128202;</div>
+            <div>Data &amp; AI</div>
+            <b>3 programs</b>
+          </div>
+          <div class="hs-row">
+            <div class="hs-ic">&#127919;</div>
+            <div>Individual courses</div>
+            <b>18 courses</b>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certificate programs catalog -->
+    <section id="catalog">
+      <div class="wrap">
+        <div class="eyebrow">Full catalog</div>
+        <h2 class="sec-title">Choose your career path</h2>
+        <p class="sec-sub">
+          Every program bundles a fixed sequence of courses and labs into
+          one roadmap — finish start to finish, or jump to the module you
+          need.
+        </p>
+
+        <div class="chip-filter reveal" id="programFilter">
+          <button class="active" data-filter="all">All programs</button>
+          <button data-filter="Beginner">Beginner</button>
+          <button data-filter="Intermediate">Intermediate</button>
+          <button data-filter="Advanced">Advanced</button>
+        </div>
+
+        <div class="full-prog-grid reveal-stagger">
+          <article class="full-prog" data-level="Beginner">
+            <div class="badge-row"><span class="badge badge-popular">Most popular</span></div>
+            <div class="icon">&#128421;</div>
+            <h3>Modern IT Support Certificate Program</h3>
+            <p class="desc">Best for: Help Desk, IT Support, and Service Desk roles.</p>
+            <div class="meta"><span class="tag lvl">Beginner</span><span class="tag">~90 hours</span></div>
+            <ul class="learn">
+              <li>Troubleshoot hardware, OS, and network issues end to end</li>
+              <li>Practice real ticket triage in guided lab environments</li>
+              <li>Build a support resume employers actually shortlist</li>
+            </ul>
+            <div class="full-prog-foot">
+              <a class="btn btn-primary" href="#">Open program</a>
+              <a class="btn btn-ghost" href="#">Syllabus</a>
+            </div>
+          </article>
+
+          <article class="full-prog" data-level="Intermediate">
+            <div class="badge-row"><span class="badge badge-new">In demand</span></div>
+            <div class="icon">&#128736;</div>
+            <h3>Systems Engineer Certificate Program</h3>
+            <p class="desc">Best for: SysAdmin, Junior Systems Engineer, and Infrastructure roles.</p>
+            <div class="meta"><span class="tag lvl">Intermediate</span><span class="tag">~110 hours</span></div>
+            <ul class="learn">
+              <li>Administer Windows Server and Linux environments</li>
+              <li>Automate routine admin tasks with scripting basics</li>
+              <li>Run infrastructure labs that mirror real outages</li>
+            </ul>
+            <div class="full-prog-foot">
+              <a class="btn btn-primary" href="#">Open program</a>
+              <a class="btn btn-ghost" href="#">Syllabus</a>
+            </div>
+          </article>
+
+          <article class="full-prog" data-level="Intermediate">
+            <div class="badge-row"><span class="badge badge-popular">Most popular</span></div>
+            <div class="icon">&#9729;</div>
+            <h3>AWS Cloud Engineer Certificate Program</h3>
+            <p class="desc">Best for: Cloud Admin and Cloud Engineer roles on AWS.</p>
+            <div class="meta"><span class="tag lvl">Intermediate</span><span class="tag">~120 hours</span></div>
+            <ul class="learn">
+              <li>Deploy and manage core AWS services end to end</li>
+              <li>Configure IAM, VPC networking, and storage correctly</li>
+              <li>Complete sandboxed labs in a real AWS console</li>
+            </ul>
+            <div class="full-prog-foot">
+              <a class="btn btn-primary" href="#">Open program</a>
+              <a class="btn btn-ghost" href="#">Syllabus</a>
+            </div>
+          </article>
+
+          <article class="full-prog" data-level="Advanced">
+            <div class="badge-row"></div>
+            <div class="icon">&#9729;</div>
+            <h3>Azure Cloud Engineer Certificate Program</h3>
+            <p class="desc">Best for: Cloud Admin and Cloud Engineer roles on Microsoft Azure.</p>
+            <div class="meta"><span class="tag lvl">Advanced</span><span class="tag">~100 hours</span></div>
+            <ul class="learn">
+              <li>Manage Azure Active Directory and resource policies</li>
+              <li>Deploy scalable infrastructure across Azure regions</li>
+              <li>Run real Azure DevOps release-pipeline labs</li>
+            </ul>
+            <div class="full-prog-foot">
+              <a class="btn btn-primary" href="#">Open program</a>
+              <a class="btn btn-ghost" href="#">Syllabus</a>
+            </div>
+          </article>
+
+          <article class="full-prog" data-level="Intermediate">
+            <div class="badge-row"></div>
+            <div class="icon">&#128274;</div>
+            <h3>Cybersecurity Analyst Certificate Program</h3>
+            <p class="desc">Best for: SOC Analyst and entry security roles.</p>
+            <div class="meta"><span class="tag lvl">Intermediate</span><span class="tag">~115 hours</span></div>
+            <ul class="learn">
+              <li>Monitor, detect, and respond to simulated incidents</li>
+              <li>Learn the frameworks SOC teams actually use daily</li>
+              <li>Practice on a live threat-detection lab environment</li>
+            </ul>
+            <div class="full-prog-foot">
+              <a class="btn btn-primary" href="#">Open program</a>
+              <a class="btn btn-ghost" href="#">Syllabus</a>
+            </div>
+          </article>
+
+          <article class="full-prog" data-level="Intermediate">
+            <div class="badge-row"><span class="badge badge-new">New</span></div>
+            <div class="icon">&#128225;</div>
+            <h3>Cisco Network Engineer Certificate Program</h3>
+            <p class="desc">Best for: Network Administrator and NOC Engineer roles.</p>
+            <div class="meta"><span class="tag lvl">Intermediate</span><span class="tag">~105 hours</span></div>
+            <ul class="learn">
+              <li>Configure routing and switching on real Cisco IOS labs</li>
+              <li>Diagnose traffic with Wireshark packet captures</li>
+              <li>Prepare for CCNA-aligned networking fundamentals</li>
+            </ul>
+            <div class="full-prog-foot">
+              <a class="btn btn-primary" href="#">Open program</a>
+              <a class="btn btn-ghost" href="#">Syllabus</a>
+            </div>
+          </article>
+
+          <article class="full-prog" data-level="Intermediate">
+            <div class="badge-row"><span class="badge badge-new">New</span></div>
+            <div class="icon">&#128202;</div>
+            <h3>Data Analytics Certificate Program</h3>
+            <p class="desc">Best for: Data Analyst and Business Intelligence roles.</p>
+            <div class="meta"><span class="tag lvl">Intermediate</span><span class="tag">~95 hours</span></div>
+            <ul class="learn">
+              <li>Query and shape data with SQL from real datasets</li>
+              <li>Build dashboards clients and managers can act on</li>
+              <li>Practice reporting in Power BI lab projects</li>
+            </ul>
+            <div class="full-prog-foot">
+              <a class="btn btn-primary" href="#">Open program</a>
+              <a class="btn btn-ghost" href="#">Syllabus</a>
+            </div>
+          </article>
+
+          <article class="full-prog" data-level="Advanced">
+            <div class="badge-row"></div>
+            <div class="icon">&#129504;</div>
+            <h3>Data Science Certificate Program</h3>
+            <p class="desc">Best for: Junior Data Scientist and ML-adjacent roles.</p>
+            <div class="meta"><span class="tag lvl">Advanced</span><span class="tag">~130 hours</span></div>
+            <ul class="learn">
+              <li>Build a statistics foundation for real analysis work</li>
+              <li>Write applied Python for data cleaning and modeling</li>
+              <li>Ship an end-to-end capstone analysis project</li>
+            </ul>
+            <div class="full-prog-foot">
+              <a class="btn btn-primary" href="#">Open program</a>
+              <a class="btn btn-ghost" href="#">Syllabus</a>
+            </div>
+          </article>
+
+          <article class="full-prog" data-level="Intermediate">
+            <div class="badge-row"><span class="badge badge-new">New</span></div>
+            <div class="icon">&#129302;</div>
+            <h3>AI Engineering &amp; Automation Certificate Program</h3>
+            <p class="desc">Best for: AI Engineer, Automation Engineer, and AI-assisted developer roles.</p>
+            <div class="meta"><span class="tag lvl">Intermediate</span><span class="tag">~100 hours</span></div>
+            <ul class="learn">
+              <li>Build and deploy practical AI-assisted workflows</li>
+              <li>Automate business processes with modern tooling</li>
+              <li>Ship a capstone project for your portfolio</li>
+            </ul>
+            <div class="full-prog-foot">
+              <a class="btn btn-primary" href="#">Open program</a>
+              <a class="btn btn-ghost" href="#">Syllabus</a>
+            </div>
+          </article>
+
+          <article class="full-prog" data-level="Beginner">
+            <div class="badge-row"></div>
+            <div class="icon">&#128188;</div>
+            <h3>Freelancer Certificate Program</h3>
+            <p class="desc">Best for: Freelance IT support, gig-based network and helpdesk work.</p>
+            <div class="meta"><span class="tag lvl">Beginner</span><span class="tag">~60 hours</span></div>
+            <ul class="learn">
+              <li>Package your IT skills into sellable service offers</li>
+              <li>Price, pitch, and onboard your first clients</li>
+              <li>Handle remote support tickets with confidence</li>
+            </ul>
+            <div class="full-prog-foot">
+              <a class="btn btn-primary" href="#">Open program</a>
+              <a class="btn btn-ghost" href="#">Syllabus</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Individual courses -->
+    <section class="programs" id="courses">
+      <div class="wrap">
+        <div class="eyebrow">Focused skill training</div>
+        <h2 class="sec-title">Browse individual IT courses</h2>
+        <p class="sec-sub">
+          Not ready for a full program? Pick a single course to strengthen
+          one technology or workplace skill — every course includes labs.
+        </p>
+
+        <div class="course-toolbar reveal">
+          <div class="search-box">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="courseSearch" placeholder="Search courses, skill, or technology…" aria-label="Search courses">
+          </div>
+          <div class="chip-filter course-filter" id="courseFilter">
+            <button class="active" data-filter="all">All courses</button>
+            <button data-filter="support">IT Support</button>
+            <button data-filter="cloud">Cloud</button>
+            <button data-filter="security">Security</button>
+            <button data-filter="network">Networking</button>
+            <button data-filter="data">Data &amp; AI</button>
+          </div>
+        </div>
+
+        <div class="course-grid reveal-stagger">
+          <article class="course-card" data-cat="support">
+            <div class="course-thumb"><span class="vendor-tag">JSS · A+ 220-1102</span><span class="free-tag">Free</span><div class="cplay">&#9654;</div></div>
+            <div class="course-body">
+              <h4>Modern IT Support Training: Part 1 (A+ 220-1102)</h4>
+              <div class="course-tags"><span>Workstations</span><span>Networking basics</span></div>
+              <div class="course-foot"><span class="course-len">35h 54m · 310 lessons</span><a class="btn btn-ghost" href="#" style="padding:8px 16px;font-size:12.5px;">Watch</a></div>
+            </div>
+          </article>
+          <article class="course-card" data-cat="support">
+            <div class="course-thumb"><span class="vendor-tag">JSS · A+ 220-1101</span><span class="free-tag">Free</span><div class="cplay">&#9654;</div></div>
+            <div class="course-body">
+              <h4>Modern IT Support Training: Part 2 (A+ 220-1101)</h4>
+              <div class="course-tags"><span>Troubleshooting</span><span>Hardware</span></div>
+              <div class="course-foot"><span class="course-len">12h 0m · 66 lessons</span><a class="btn btn-ghost" href="#" style="padding:8px 16px;font-size:12.5px;">Watch</a></div>
+            </div>
+          </article>
+          <article class="course-card" data-cat="support">
+            <div class="course-thumb"><span class="vendor-tag">JSS</span><span class="free-tag">Free</span><div class="cplay">&#9654;</div></div>
+            <div class="course-body">
+              <h4>IT Support: Active Directory &amp; Tech Skills</h4>
+              <div class="course-tags"><span>Group policy</span><span>User admin</span></div>
+              <div class="course-foot"><span class="course-len">13h 0m · 118 lessons</span><a class="btn btn-ghost" href="#" style="padding:8px 16px;font-size:12.5px;">Watch</a></div>
+            </div>
+          </article>
+          <article class="course-card" data-cat="support">
+            <div class="course-thumb"><span class="vendor-tag">JSS</span><span class="free-tag">Free</span><div class="cplay">&#9654;</div></div>
+            <div class="course-body">
+              <h4>IT Support Resume &amp; Applying for Jobs</h4>
+              <div class="course-tags"><span>Resume building</span><span>Job search</span></div>
+              <div class="course-foot"><span class="course-len">6h 0m · 20 lessons</span><a class="btn btn-ghost" href="#" style="padding:8px 16px;font-size:12.5px;">Watch</a></div>
+            </div>
+          </article>
+          <article class="course-card" data-cat="cloud">
+            <div class="course-thumb"><span class="vendor-tag">AWS</span><span class="free-tag">Free</span><div class="cplay">&#9654;</div></div>
+            <div class="course-body">
+              <h4>AWS Cloud Administrator Fundamentals</h4>
+              <div class="course-tags"><span>Core services</span><span>IAM basics</span></div>
+              <div class="course-foot"><span class="course-len">18h 20m · 140 lessons</span><a class="btn btn-ghost" href="#" style="padding:8px 16px;font-size:12.5px;">Watch</a></div>
+            </div>
+          </article>
+          <article class="course-card" data-cat="cloud">
+            <div class="course-thumb"><span class="vendor-tag">AWS</span><span class="free-tag">Free</span><div class="cplay">&#9654;</div></div>
+            <div class="course-body">
+              <h4>AWS Cloud Administrator | Advanced</h4>
+              <div class="course-tags"><span>Automation</span><span>Cost optimization</span></div>
+              <div class="course-foot"><span class="course-len">16h 10m · 96 lessons</span><a class="btn btn-ghost" href="#" style="padding:8px 16px;font-size:12.5px;">Watch</a></div>
+            </div>
+          </article>
+          <article class="course-card" data-cat="cloud">
+            <div class="course-thumb"><span class="vendor-tag">Azure</span><span class="free-tag">Free</span><div class="cplay">&#9654;</div></div>
+            <div class="course-body">
+              <h4>Microsoft Azure Administrator Training (AZ-104)</h4>
+              <div class="course-tags"><span>Resource mgmt</span><span>Storage</span></div>
+              <div class="course-foot"><span class="course-len">17h 0m · 130 lessons</span><a class="btn btn-ghost" href="#" style="padding:8px 16px;font-size:12.5px;">Watch</a></div>
+            </div>
+          </article>
+          <article class="course-card" data-cat="cloud">
+            <div class="course-thumb"><span class="vendor-tag">Azure</span><span class="free-tag">Free</span><div class="cplay">&#9654;</div></div>
+            <div class="course-body">
+              <h4>Azure DevOps Real-World Case Studies</h4>
+              <div class="course-tags"><span>CI/CD</span><span>Release mgmt</span></div>
+              <div class="course-foot"><span class="course-len">9h 40m · 62 lessons</span><a class="btn btn-ghost" href="#" style="padding:8px 16px;font-size:12.5px;">Watch</a></div>
+            </div>
+          </article>
+          <article class="course-card" data-cat="network">
+            <div class="course-thumb"><span class="vendor-tag">Cisco</span><span class="free-tag">Free</span><div class="cplay">&#9654;</div></div>
+            <div class="course-body">
+              <h4>Cisco CCNA (200-301) Networking Skills</h4>
+              <div class="course-tags"><span>Routing</span><span>Switching</span></div>
+              <div class="course-foot"><span class="course-len">22h 0m · 180 lessons</span><a class="btn btn-ghost" href="#" style="padding:8px 16px;font-size:12.5px;">Watch</a></div>
+            </div>
+          </article>
+          <article class="course-card" data-cat="network">
+            <div class="course-thumb"><span class="vendor-tag">Cisco</span><span class="free-tag">Free</span><div class="cplay">&#9654;</div></div>
+            <div class="course-body">
+              <h4>Cisco Core Networking | Packet Tracer</h4>
+              <div class="course-tags"><span>Simulation labs</span><span>Topology design</span></div>
+              <div class="course-foot"><span class="course-len">11h 20m · 74 lessons</span><a class="btn btn-ghost" href="#" style="padding:8px 16px;font-size:12.5px;">Watch</a></div>
+            </div>
+          </article>
+          <article class="course-card" data-cat="security">
+            <div class="course-thumb"><span class="vendor-tag">CompTIA</span><span class="free-tag">Free</span><div class="cplay">&#9654;</div></div>
+            <div class="course-body">
+              <h4>CompTIA Security+ Training (SY0-701) Part 1</h4>
+              <div class="course-tags"><span>Threats</span><span>Cryptography</span></div>
+              <div class="course-foot"><span class="course-len">14h 10m · 118 lessons</span><a class="btn btn-ghost" href="#" style="padding:8px 16px;font-size:12.5px;">Watch</a></div>
+            </div>
+          </article>
+          <article class="course-card" data-cat="security">
+            <div class="course-thumb"><span class="vendor-tag">CompTIA</span><span class="free-tag">Free</span><div class="cplay">&#9654;</div></div>
+            <div class="course-body">
+              <h4>CompTIA Security+ Training (SY0-701) Part 2</h4>
+              <div class="course-tags"><span>Risk mgmt</span><span>Governance</span></div>
+              <div class="course-foot"><span class="course-len">12h 30m · 104 lessons</span><a class="btn btn-ghost" href="#" style="padding:8px 16px;font-size:12.5px;">Watch</a></div>
+            </div>
+          </article>
+          <article class="course-card" data-cat="security">
+            <div class="course-thumb"><span class="vendor-tag">CompTIA</span><span class="free-tag">Free</span><div class="cplay">&#9654;</div></div>
+            <div class="course-body">
+              <h4>CompTIA Linux+ (XK0-005)</h4>
+              <div class="course-tags"><span>Command line</span><span>Shell scripting</span></div>
+              <div class="course-foot"><span class="course-len">13h 50m · 96 lessons</span><a class="btn btn-ghost" href="#" style="padding:8px 16px;font-size:12.5px;">Watch</a></div>
+            </div>
+          </article>
+          <article class="course-card" data-cat="security">
+            <div class="course-thumb"><span class="vendor-tag">JSS</span><span class="free-tag">Free</span><div class="cplay">&#9654;</div></div>
+            <div class="course-body">
+              <h4>Cybersecurity Technical Skills by an Expert</h4>
+              <div class="course-tags"><span>Applied practice</span><span>SOC workflow</span></div>
+              <div class="course-foot"><span class="course-len">10h 0m · 70 lessons</span><a class="btn btn-ghost" href="#" style="padding:8px 16px;font-size:12.5px;">Watch</a></div>
+            </div>
+          </article>
+          <article class="course-card" data-cat="data">
+            <div class="course-thumb"><span class="vendor-tag">Microsoft</span><span class="free-tag">Free</span><div class="cplay">&#9654;</div></div>
+            <div class="course-body">
+              <h4>Microsoft SQL for IT Professionals</h4>
+              <div class="course-tags"><span>Query fundamentals</span><span>Joins</span></div>
+              <div class="course-foot"><span class="course-len">9h 0m · 56 lessons</span><a class="btn btn-ghost" href="#" style="padding:8px 16px;font-size:12.5px;">Watch</a></div>
+            </div>
+          </article>
+          <article class="course-card" data-cat="data">
+            <div class="course-thumb"><span class="vendor-tag">Power BI</span><span class="free-tag">Free</span><div class="cplay">&#9654;</div></div>
+            <div class="course-body">
+              <h4>Roles and Careers in Power BI</h4>
+              <div class="course-tags"><span>Dashboards</span><span>Data modeling</span></div>
+              <div class="course-foot"><span class="course-len">8h 20m · 48 lessons</span><a class="btn btn-ghost" href="#" style="padding:8px 16px;font-size:12.5px;">Watch</a></div>
+            </div>
+          </article>
+          <article class="course-card" data-cat="data">
+            <div class="course-thumb"><span class="vendor-tag">Python</span><span class="free-tag">Free</span><div class="cplay">&#9654;</div></div>
+            <div class="course-body">
+              <h4>Python Fundamentals for Data Science Beginners</h4>
+              <div class="course-tags"><span>Core syntax</span><span>Data structures</span></div>
+              <div class="course-foot"><span class="course-len">10h 0m · 64 lessons</span><a class="btn btn-ghost" href="#" style="padding:8px 16px;font-size:12.5px;">Watch</a></div>
+            </div>
+          </article>
+          <article class="course-card" data-cat="data">
+            <div class="course-thumb"><span class="vendor-tag">AWS</span><span class="free-tag">Free</span><div class="cplay">&#9654;</div></div>
+            <div class="course-body">
+              <h4>Route 53 &amp; DNS on AWS — Applied Demo</h4>
+              <div class="course-tags"><span>DNS routing</span><span>Hosted zones</span></div>
+              <div class="course-foot"><span class="course-len">4h 40m · 22 lessons</span><a class="btn btn-ghost" href="#" style="padding:8px 16px;font-size:12.5px;">Watch</a></div>
+            </div>
+          </article>
+        </div>
+        <p class="no-results">No courses match your search — try a different keyword or filter.</p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section>
+      <div class="wrap">
+        <div class="eyebrow" style="justify-content:center;display:flex;">Questions</div>
+        <h2 class="sec-title" style="text-align:center;">Before you choose a program</h2>
+        <p class="sec-sub" style="margin-left:auto;margin-right:auto;text-align:center;">
+          Answers to what people usually ask before enrolling.
+        </p>
+        <div class="faq-list reveal">
+          <div class="faq-item open">
+            <div class="faq-q"><span>Do I have to finish a program in order?</span><span class="icon-plus">+</span></div>
+            <div class="faq-a"><p>Each program is a recommended sequence, but every course inside it also stands alone — start wherever your current skill level makes sense.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q"><span>What's included in the hands-on labs?</span><span class="icon-plus">+</span></div>
+            <div class="faq-a"><p>Real Windows, Linux, and cloud-console environments you practice in directly in the browser — not simulations or screenshots.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q"><span>Is the Free plan enough to finish a program?</span><span class="icon-plus">+</span></div>
+            <div class="faq-a"><p>Free covers IT Support training and networking basics. Premium unlocks all 10 programs, full lab access, and the complete video library.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q"><span>Can I take individual courses without a program?</span><span class="icon-plus">+</span></div>
+            <div class="faq-a"><p>Yes — every course in the Individual Courses section above is available on its own, with the same labs included.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q"><span>Can my employer get bulk licenses?</span><span class="icon-plus">+</span></div>
+            <div class="faq-a"><p>Yes — see the Business inquiries &amp; bulk licensing section on the homepage, or contact sales@jobskillshare.org directly.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section>
+      <div class="wrap">
+        <div class="prog-cta reveal">
+          <h2>Ready to start your IT career?</h2>
+          <p>Join 50,000+ learners building job-ready skills with hands-on practice.</p>
+          <a class="btn btn-primary btn-big" href="index.html#pricing">Create free account</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer (identical to homepage) -->
+    <footer>
+      <div class="wrap">
+        <div class="foot">
+          <div>
+            <a class="logo" href="index.html">
+              <span class="parent" style="color: #9db6d4">EDTECH4D</span>
+              <span class="main" style="color: #fff"
+                >JobSkill<span style="color: #7db4f0">Share</span></span
+              >
+            </a>
+            <p style="margin-top: 12px; max-width: 300px">
+              JobSkillShare is the Pakistan branch of EDTECH4D, an
+              international IT skills training company. Same team, same
+              programs, two names.
+            </p>
+            <p style="margin-top: 10px; max-width: 280px">
+              Join 60,000+ members from 120+ countries.
+            </p>
+          </div>
+          <div>
+            <h4>Programs</h4>
+            <a href="programs.html#catalog">IT Support</a><a href="programs.html#catalog">Systems Engineer</a
+            ><a href="programs.html#catalog">Cloud Engineer</a><a href="programs.html#catalog">Cybersecurity</a>
+          </div>
+          <div>
+            <h4>Company</h4>
+            <a href="#">Mission</a><a href="index.html#pricing">Membership</a
+            ><a href="#">Free Interview Prep</a><a href="#">Terms</a>
+          </div>
+          <div>
+            <h4>Support</h4>
+            <a href="#">support@jobskillshare.org</a
+            ><a href="#">sales@jobskillshare.org</a
+            ><a href="#">Community Discord</a>
+          </div>
+        </div>
+        <div class="copyright">
+          &copy; 2026 JobSkillShare. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
