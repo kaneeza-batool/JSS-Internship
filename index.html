@@ -7,27 +7,25 @@
       JobSkillShare (EDTECH4D) — Job-ready IT skills with hands-on labs
     </title>
     <!--
-  JSS Homepage — v3 (premium pass)
-  Base: Kaneeza Batool's Week 2 structure (nav, hero, steps, programs,
-  coming-soon, preview, stats/testimonials, pricing, enterprise, final CTA)
-  is kept as the foundation, per team direction.
+  JSS Homepage — v4 (audit-fix pass)
+  Builds on the v3 premium pass (nav, hero orbit, steps, programs,
+  coming-soon, preview, stats/testimonials, pricing, enterprise, final CTA).
 
-  What changed in this pass, and why:
-  - Hero visual: replaced with the rotating-tag orbit around the "JSS" mark
-    from the original site (screenshot reference), rebuilt smoother with a
-    3-layer counter-rotation technique so the pill labels stay upright while
-    orbiting, plus a soft pulsing core glow. Respects prefers-reduced-motion.
-  - The Week 2 terminal mockup is *not* deleted — it's relocated into the
-    "Preview our content" section (id="preview") and made to actually type,
-    switching content per preview-item, so the hands-on-labs proof-of-concept
-    lives in one place instead of being duplicated between hero and preview.
-  - Color palette is locked to the brand reference (Blue #2E75B6,
-    Navy #1F3864, Ice Blue #D5E3EF) — see style.css :root for the derived
-    tint/shade scale used everywhere else.
-  - Added micro-interactions: hover elevation + top-edge highlight on step
-    cards, glow-on-hover on program cards, glassmorphic enterprise panel,
-    scroll reveal (staggered for grids), animated "coming soon" form
-    confirmation, live-typing terminal.
+  What changed in this pass, and why (see JobSkillShare_Signup_Flow_Audit.md):
+  - Every "Create free account" / plan CTA now opens the new in-page
+    auth modal (data-open-auth) instead of linking to "#" or forcing a
+    page-to-page hop before the first form field appears (audit #9).
+  - The modal is a single component (modal.css block in style.css +
+    modal logic in script.js) shared by index.html and membership.html:
+    plan step -> account step -> optional details step -> done, plus a
+    single-purpose login step and a single-purpose forgot-password step
+    that doesn't repeat unrelated promo links (audit #6).
+  - Password fields use an inline eye-icon toggle instead of a full
+    button, so they don't compete visually with the submit CTA (audit #3).
+  - A step indicator runs across the top of the signup steps (audit #4).
+  - The modal overlay sits above everything else on the page (no promo
+    banner bleed-through, no floating chat bubble overlap - audit #1/#2).
+  - "Log in" nav links now also open the modal's login step directly.
 -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -38,6 +36,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="scroll-progress" id="scrollProgress"></div>
     <!-- Header / nav -->
     <header>
       <div class="wrap nav">
@@ -48,16 +47,16 @@
         <nav class="menu" id="mainMenu">
           <a href="index.html">Home</a>
           <a href="programs.html">Programs</a>
-          <a href="index.html#pricing">Pricing</a>
+          <a href="membership.html">Pricing</a>
           <a href="index.html#stories">Success Stories</a>
           <div class="nav-actions mobile-show">
-            <a class="btn btn-ghost" href="#">Log in</a>
-            <a class="btn btn-primary" href="index.html#pricing">Get started</a>
+            <a class="btn btn-ghost" href="#" data-open-auth="login">Log in</a>
+            <a class="btn btn-primary" href="#" data-open-auth="plan">Get started</a>
           </div>
         </nav>
         <div class="nav-actions">
-          <a class="btn btn-ghost" href="#">Log in</a>
-          <a class="btn btn-primary" href="index.html#pricing">Get started</a>
+          <a class="btn btn-ghost" href="#" data-open-auth="login">Log in</a>
+          <a class="btn btn-primary" href="#" data-open-auth="plan">Get started</a>
         </div>
         <button
           class="menu-toggle"
@@ -73,6 +72,7 @@
     <!-- Hero -->
     <section class="hero">
       <div class="hero-divider" aria-hidden="true"></div>
+      <div class="bg-orbs" aria-hidden="true"><span class="bg-orb o1"></span><span class="bg-orb o2"></span><span class="bg-orb o3"></span></div><div class="spotlight" aria-hidden="true"></div>
       <div class="wrap">
         <div class="hero-text">
           <h1>Job-ready IT skills with <em>hands-on labs</em></h1>
@@ -81,8 +81,8 @@
             real Windows, Linux, and cloud environments, online 24/7.
           </p>
           <div class="hero-cta">
-            <a class="btn btn-primary btn-big" href="programs.html"
-              >Explore programs</a
+            <a class="btn btn-primary btn-big btn-magnetic" href="#" data-open-auth="plan"
+              >Create free account</a
             >
             <a class="preview-link" href="#preview"
               ><span class="play">&#9654;</span> Watch 2-min preview</a
@@ -232,7 +232,7 @@
           included in every one.
         </p>
         <div class="prog-grid reveal-stagger">
-          <div class="prog">
+          <div class="prog tilt">
             <div class="icon">&#128421;</div>
             <h3>Modern IT Support Certificate Program</h3>
             <p>Best for: Help Desk, IT Support, and Service Desk roles.</p>
@@ -242,7 +242,7 @@
             </div>
             <a class="open" href="programs.html">Open program &rarr;</a>
           </div>
-          <div class="prog">
+          <div class="prog tilt">
             <div class="icon">&#128736;</div>
             <h3>Systems Engineer Certificate Program</h3>
             <p>
@@ -255,7 +255,7 @@
             </div>
             <a class="open" href="programs.html">Open program &rarr;</a>
           </div>
-          <div class="prog">
+          <div class="prog tilt">
             <div class="icon">&#9729;</div>
             <h3>Cloud Engineer Certificate Program</h3>
             <p>
@@ -267,7 +267,7 @@
             </div>
             <a class="open" href="programs.html">Open program &rarr;</a>
           </div>
-          <div class="prog">
+          <div class="prog tilt">
             <div class="icon">&#128274;</div>
             <h3>Cybersecurity Analyst Certificate Program</h3>
             <p>Best for: SOC Analyst and entry security roles.</p>
@@ -401,7 +401,7 @@
           Membership and content figures as reported on JobSkillShare, 2026.
         </div>
         <div class="quotes reveal-stagger">
-          <div class="quote">
+          <div class="quote tilt">
             <p>
               "The hands-on labs and real-world scenarios prepared me perfectly
               for my current role."
@@ -411,7 +411,7 @@
               <div><b>Amit G.</b><span>Australia</span></div>
             </div>
           </div>
-          <div class="quote">
+          <div class="quote tilt">
             <p>
               "I went from zero IT background to my first support role by
               following one roadmap start to finish."
@@ -424,7 +424,7 @@
               </div>
             </div>
           </div>
-          <div class="quote">
+          <div class="quote tilt">
             <p>
               "The labs made the difference in interviews. I could talk about
               things I had actually done."
@@ -448,7 +448,7 @@
         <h2 class="sec-title">Start free. Upgrade when you are ready.</h2>
         <p class="sec-sub">No hidden fees. Cancel anytime.</p>
         <div class="plans reveal-stagger">
-          <div class="plan">
+          <div class="plan tilt">
             <h3>Free</h3>
             <div class="price">$0<small> / 3 months</small></div>
             <ul>
@@ -457,9 +457,9 @@
               <li>Resume building &amp; job prep</li>
               <li>JSS community access</li>
             </ul>
-            <a class="btn btn-ghost" href="#">Start free</a>
+            <a class="btn btn-ghost" href="#" data-open-auth="plan" data-plan="free">Start free</a>
           </div>
-          <div class="plan featured">
+          <div class="plan featured tilt">
             <div class="flag">MOST POPULAR</div>
             <h3>Premium</h3>
             <div class="price">$50<small> / month</small></div>
@@ -469,9 +469,9 @@
               <li>Complete video course library</li>
               <li>All AI-powered career tools</li>
             </ul>
-            <a class="btn btn-primary" href="#">Go Premium</a>
+            <a class="btn btn-primary" href="#" data-open-auth="plan" data-plan="monthly">Go Premium</a>
           </div>
-          <div class="plan">
+          <div class="plan tilt">
             <h3>Premium Yearly</h3>
             <div class="price">$549<small> / year</small></div>
             <ul>
@@ -480,13 +480,13 @@
               <li>Priority support</li>
               <li>Resume review &amp; exclusive workshops</li>
             </ul>
-            <a class="btn btn-ghost" href="#">Get yearly</a>
+            <a class="btn btn-ghost" href="#" data-open-auth="plan" data-plan="yearly">Get yearly</a>
           </div>
         </div>
         <div class="pricing-note">
           Need team or bulk licenses?
-          <a href="#">Contact sales</a> &nbsp;&middot;&nbsp;
-          <a href="#">See full plan comparison &rarr;</a>
+          <a href="membership.html#enterprise">Contact sales</a> &nbsp;&middot;&nbsp;
+          <a href="membership.html">See full plan comparison &rarr;</a>
         </div>
       </div>
     </section>
@@ -526,7 +526,7 @@
           <div class="ent-form">
             <h4>Contact sales</h4>
             <div class="contact">&#9993; sales@jobskillshare.org</div>
-            <a class="btn btn-primary" href="#">Get bulk license quote</a>
+            <a class="btn btn-primary" href="mailto:sales@jobskillshare.org">Get bulk license quote</a>
           </div>
         </div>
       </div>
@@ -534,13 +534,14 @@
 
     <!-- Final CTA -->
     <section class="final">
+      <div class="bg-orbs" aria-hidden="true"><span class="bg-orb o1"></span><span class="bg-orb o2"></span><span class="bg-orb o3"></span></div><div class="spotlight" aria-hidden="true"></div>
       <div class="wrap">
         <h2>Ready to start your IT career?</h2>
         <p>
           Join 50,000+ learners building job-ready skills with hands-on
           practice.
         </p>
-        <a class="btn btn-primary btn-big" href="#">Create free account</a>
+        <a class="btn btn-primary btn-big btn-magnetic" href="#" data-open-auth="plan">Create free account</a>
       </div>
     </section>
 
@@ -569,7 +570,7 @@
           </div>
           <div>
             <h4>Company</h4>
-            <a href="#">Mission</a><a href="#">Membership</a
+            <a href="#">Mission</a><a href="membership.html">Membership</a
             ><a href="#">Free Interview Prep</a><a href="#">Terms</a>
           </div>
           <div>
@@ -584,6 +585,24 @@
         </div>
       </div>
     </footer>
+
+    <!-- Auth modal (signup / login / reset) — shared component, see modal.js -->
+    <div class="auth-overlay" id="authOverlay" hidden>
+      <div
+        class="auth-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="authTitle"
+      >
+        <button class="auth-close" id="authClose" aria-label="Close">&times;</button>
+        <div id="authStepper" class="auth-stepper" hidden>
+          <div class="auth-step-dot" data-step="plan"><span>1</span>Plan</div>
+          <div class="auth-step-dot" data-step="account"><span>2</span>Account</div>
+          <div class="auth-step-dot" data-step="details"><span>3</span>Finish</div>
+        </div>
+        <div class="auth-body" id="authBody"></div>
+      </div>
+    </div>
 
     <script src="script.js"></script>
   </body>
