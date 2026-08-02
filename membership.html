@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Membership &amp; Pricing — JobSkillShare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <header>
+      <div class="wrap nav">
+        <a class="logo" href="index.html">
+          <span class="parent">EDTECH4D</span>
+          <span class="main">JobSkill<span>Share</span></span>
+        </a>
+        <nav class="menu" id="mainMenu">
+          <a href="index.html">Home</a>
+          <a href="programs.html">Programs</a>
+          <a href="membership.html" class="active" aria-current="page">Pricing</a>
+          <a href="index.html#stories">Success Stories</a>
+          <div class="nav-actions mobile-show">
+            <a class="btn btn-ghost" href="#" data-open-auth="login">Log in</a>
+            <a class="btn btn-primary" href="#" data-open-auth="plan">Get started</a>
+          </div>
+        </nav>
+        <div class="nav-actions">
+          <a class="btn btn-ghost" href="#" data-open-auth="login">Log in</a>
+          <a class="btn btn-primary" href="#" data-open-auth="plan">Get started</a>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Page hero -->
+    <section class="page-hero">
+      <div class="hero-divider" aria-hidden="true"></div>
+      <div class="bg-orbs" aria-hidden="true"><span class="bg-orb o1"></span><span class="bg-orb o2"></span><span class="bg-orb o3"></span></div><div class="spotlight" aria-hidden="true"></div>
+      <div class="wrap">
+        <div class="page-hero-inner">
+          <div class="breadcrumb"><a href="index.html">Home</a> / Membership</div>
+          <h1>One membership. Every certificate program.</h1>
+          <p class="lead">
+            Start free, see how the labs work, then upgrade only when you're
+            ready. Your plan carries straight into checkout — no surprises.
+          </p>
+          <div class="page-hero-stats">
+            <div><b>6+</b><span>Programs</span></div>
+            <div><b>500+</b><span>Hours of content</span></div>
+            <div><b>24/7</b><span>Lab access</span></div>
+          </div>
+          <div class="page-hero-cta">
+            <a class="btn btn-primary btn-big btn-magnetic" href="#pricing">See plans</a>
+            <a class="btn btn-ghost btn-big" href="#faq">Read FAQ</a>
+          </div>
+        </div>
+        <div class="hero-snapshot">
+          <div class="hero-snapshot-head">
+            <span>WHY PREMIUM</span>
+            <span class="live"><i></i>413 course ratings · 4.8★</span>
+          </div>
+          <div class="hs-row"><div class="hs-ic">&#128193;</div><div>All 6 certificate programs, switch anytime</div><b>Included</b></div>
+          <div class="hs-row"><div class="hs-ic">&#129514;</div><div>Hands-on Windows, Linux &amp; network labs</div><b>24/7</b></div>
+          <div class="hs-row"><div class="hs-ic">&#127891;</div><div>Project-based certificates for your resume</div><b>Included</b></div>
+          <div class="hs-row"><div class="hs-ic">&#128172;</div><div>Discord community + lab support</div><b>Included</b></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+      <div class="wrap">
+        <div class="eyebrow">Pricing</div>
+        <h2 class="sec-title">Choose your plan</h2>
+        <p class="sec-sub">No hidden fees. Cancel anytime. Your plan choice carries automatically into the next step.</p>
+
+        <div class="trust-strip reveal">
+          <span><b>60,000+</b> members</span>
+          <span class="ts-dot">&middot;</span>
+          <span><b>120+</b> countries</span>
+          <span class="ts-dot">&middot;</span>
+          <span><b>4.8★</b> average rating</span>
+          <span class="ts-dot">&middot;</span>
+          <span>Secure checkout via Stripe</span>
+        </div>
+
+        <div class="billing-toggle" role="group" aria-label="Billing period">
+          <button type="button" class="bt-opt active" data-bill="monthly">Monthly</button>
+          <button type="button" class="bt-opt" data-bill="yearly">Yearly <span class="bt-save">Save 8%</span></button>
+        </div>
+
+        <div class="plans reveal-stagger">
+          <div class="plan tilt">
+            <h3>Free</h3>
+            <div class="price">$0<small> / 3 months</small></div>
+            <ul>
+              <li>IT Support Fundamentals</li>
+              <li>IT Admin Fundamentals</li>
+              <li>Cloud Fundamentals</li>
+              <li>Resume &amp; job prep</li>
+              <li>Community access</li>
+            </ul>
+            <a class="btn btn-ghost" href="#" data-open-auth="plan" data-plan="free">Get free access</a>
+          </div>
+          <div class="plan featured tilt">
+            <div class="flag">MOST POPULAR</div>
+            <h3>Premium</h3>
+            <div class="price" data-price-monthly="$50" data-price-yearly="$45.75">
+              <span class="price-amt">$50</span><small class="price-suffix"> / month</small>
+            </div>
+            <ul>
+              <li><b>Everything in Free</b></li>
+              <li>All 6 certificate programs</li>
+              <li>Premium hands-on labs</li>
+              <li>Lab support</li>
+              <li>Certificates</li>
+              <li>AI career advisor</li>
+            </ul>
+            <a class="btn btn-primary" href="#" data-open-auth="plan" data-plan="monthly">Start Premium</a>
+            <div class="plan-note">Billed monthly. Cancel anytime.</div>
+          </div>
+          <div class="plan tilt">
+            <h3>Premium Yearly</h3>
+            <div class="price">$549<small> / year</small></div>
+            <ul>
+              <li><b>Everything in Monthly</b></li>
+              <li>8% discount vs. monthly billing</li>
+              <li>Priority support</li>
+              <li>Resume review</li>
+              <li>Exclusive workshops</li>
+            </ul>
+            <a class="btn btn-ghost" href="#" data-open-auth="plan" data-plan="yearly">Get yearly &mdash; save $51</a>
+          </div>
+        </div>
+        <div class="pricing-note">
+          AWS/Azure cloud subscriptions are not included — members use their own accounts for cloud demo videos.
+        </div>
+      </div>
+    </section>
+
+    <!-- Programs included -->
+    <section id="programs">
+      <div class="wrap">
+        <div class="eyebrow">Programs</div>
+        <h2 class="sec-title">All programs included</h2>
+        <p class="sec-sub">One membership unlocks every certificate program.</p>
+        <div class="prog-grid reveal-stagger">
+          <div class="prog tilt"><div class="icon">&#128421;</div><h3>IT Support</h3><p>~98 hours · Beginner · Job-Ready</p><div class="meta"><span class="tag lvl">Beginner</span></div></div>
+          <div class="prog tilt"><div class="icon">&#128736;</div><h3>Systems Engineer</h3><p>~110 hours · Intermediate · In-Demand</p><div class="meta"><span class="tag lvl">Intermediate</span></div></div>
+          <div class="prog tilt"><div class="icon">&#9729;</div><h3>Cloud Engineer</h3><p>~120 hours · Intermediate · High Growth</p><div class="meta"><span class="tag lvl">Intermediate</span></div></div>
+          <div class="prog tilt"><div class="icon">&#128274;</div><h3>Cybersecurity</h3><p>~115 hours · Intermediate · Security+</p><div class="meta"><span class="tag lvl">Intermediate</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="wrap">
+        <div class="eyebrow">FAQ</div>
+        <h2 class="sec-title">Common questions</h2>
+        <p class="sec-sub">Everything you need to know about Premium membership.</p>
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-q"><span>Can I cancel anytime?</span><span class="icon-plus">+</span></div>
+            <div class="faq-a"><p>Yes. Monthly plans can be canceled at any time. Yearly plans can also be canceled with a prorated refund.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q"><span>Do I get certificates?</span><span class="icon-plus">+</span></div>
+            <div class="faq-a"><p>Yes — you earn a certificate for each program you complete. Add them to your resume and LinkedIn profile.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q"><span>Can I switch between programs?</span><span class="icon-plus">+</span></div>
+            <div class="faq-a"><p>Absolutely. Your membership gives you access to every program — switch anytime based on your career goals.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q"><span>Is there a free trial?</span><span class="icon-plus">+</span></div>
+            <div class="faq-a"><p>Yes — a free 3-month plan with fundamentals courses. Start there and upgrade when you're ready.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enterprise -->
+    <section class="enterprise" id="enterprise">
+      <div class="wrap">
+        <div class="ent-card reveal">
+          <div>
+            <div class="eyebrow" style="color: #8fb8e0">Enterprise</div>
+            <h2>Business inquiries &amp; bulk licensing</h2>
+            <p>JobSkillShare provides skills-based training with practical labs for organizations of all sizes.</p>
+            <div class="ent-list">
+              <div class="row"><div><b>Businesses &amp; employers</b>Upskill teams with job-role training and hands-on labs.</div></div>
+              <div class="row"><div><b>Education institutions</b>Complement academics with real IT labs and projects.</div></div>
+              <div class="row"><div><b>Government programs</b>Scalable training with bulk licensing and reporting.</div></div>
+            </div>
+          </div>
+          <div class="ent-form">
+            <h4>Contact sales</h4>
+            <div class="contact">&#9993; sales@jobskillshare.org</div>
+            <a class="btn btn-primary" href="mailto:sales@jobskillshare.org">Get bulk license quote</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final">
+      <div class="bg-orbs" aria-hidden="true"><span class="bg-orb o1"></span><span class="bg-orb o2"></span><span class="bg-orb o3"></span></div><div class="spotlight" aria-hidden="true"></div>
+      <div class="wrap">
+        <h2>Ready to start your IT career?</h2>
+        <p>Join 50,000+ learners building job-ready skills with hands-on practice.</p>
+        <a class="btn btn-primary btn-big btn-magnetic" href="#" data-open-auth="plan">Create free account</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <div class="foot">
+          <div>
+            <a class="logo" href="index.html">
+              <span class="parent" style="color: #9db6d4">EDTECH4D</span>
+              <span class="main" style="color: #fff">JobSkill<span style="color: #7db4f0">Share</span></span>
+            </a>
+            <p style="margin-top: 12px; max-width: 300px">JobSkillShare is the Pakistan branch of EDTECH4D, an international IT skills training company. Same team, same programs, two names.</p>
+            <p style="margin-top: 10px; max-width: 280px">Join 60,000+ members from 120+ countries.</p>
+          </div>
+          <div><h4>Programs</h4><a href="#">IT Support</a><a href="#">Systems Engineer</a><a href="#">Cloud Engineer</a><a href="#">Cybersecurity</a></div>
+          <div><h4>Company</h4><a href="#">Mission</a><a href="membership.html">Membership</a><a href="#">Free Interview Prep</a><a href="#">Terms</a></div>
+          <div><h4>Support</h4><a href="#">support@jobskillshare.org</a><a href="#">sales@jobskillshare.org</a><a href="#">Community Discord</a></div>
+        </div>
+        <div class="copyright">&copy; 2026 JobSkillShare. All rights reserved.</div>
+      </div>
+    </footer>
+
+    <!-- Auth modal (signup / login / reset) -->
+    <div class="auth-overlay" id="authOverlay" hidden>
+      <div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+        <button class="auth-close" id="authClose" aria-label="Close">&times;</button>
+        <div id="authStepper" class="auth-stepper" hidden>
+          <div class="auth-step-dot" data-step="plan"><span>1</span>Plan</div>
+          <div class="auth-step-dot" data-step="account"><span>2</span>Account</div>
+          <div class="auth-step-dot" data-step="details"><span>3</span>Finish</div>
+        </div>
+        <div class="auth-body" id="authBody"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
