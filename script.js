@@ -308,12 +308,32 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeBtn = document.getElementById('authClose');
 
   const PLANS = {
-    free:    { id: 'free',    name: 'Free',           price: '$0',   suffix: '/ 3 months', features: ['Foundation courses', 'Community access', 'Progress tracking'] },
-    monthly: { id: 'monthly', name: 'Premium Monthly', price: '$50',  suffix: '/ month',    features: ['All 6 programs', 'Hands-on labs', 'AI career tools'], popular: true },
-    yearly:  { id: 'yearly',  name: 'Premium Yearly',  price: '$549', suffix: '/ year · save $51', features: ['Everything monthly', 'Priority support', 'Resume review'] },
+    free:    { id: 'free',    name: 'Free',           price: '$0',   amount: 0,   suffix: '/ 3 months', features: ['Foundation courses', 'Community access', 'Progress tracking'] },
+    monthly: { id: 'monthly', name: 'Premium Monthly', price: '$50',  amount: 50,  suffix: '/ month',    features: ['All 6 programs', 'Hands-on labs', 'AI career tools'], popular: true },
+    yearly:  { id: 'yearly',  name: 'Premium Yearly',  price: '$549', amount: 549, suffix: '/ year · save $51', features: ['Everything monthly', 'Priority support', 'Resume review'] },
   };
 
+  // Coupon codes are a demo mechanic only, no real backend. Flat 10% off
+  // for any recognized code, shown live in the payment order summary.
+  // Never offered on the Free plan since there is nothing to discount.
+  const COUPONS = { JSS10: 0.10, WELCOME10: 0.10 };
+  let appliedCoupon = null;
+
   let state = { flow: 'signup', step: 'plan', plan: null };
+
+  // Builds the step dots to match whichever path is actually being taken:
+  // Free skips Payment entirely, Premium goes through it. Same markup and
+  // CSS classes as before, just generated so the dot count is always right
+  // instead of a fixed 3 dots that didn't account for payment.
+  function buildStepperDots() {
+    const paid = state.plan && state.plan.id !== 'free';
+    const steps = paid
+      ? [['plan', '1', 'Plan'], ['account', '2', 'Account'], ['payment', '3', 'Payment'], ['details', '4', 'Finish']]
+      : [['plan', '1', 'Plan'], ['account', '2', 'Account'], ['details', '3', 'Finish']];
+    stepperEl.innerHTML = steps.map(([key, num, label]) =>
+      `<div class="auth-step-dot" data-step="${key}"><span>${num}</span>${label}</div>`
+    ).join('');
+  }
 
   const eyeOpen = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></svg>';
   const eyeClosed = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-7 0-11-7-11-7a21.6 21.6 0 0 1 5.06-6.06M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 7 11 7a21.6 21.6 0 0 1-2.66 3.79M14.12 14.12A3 3 0 1 1 9.88 9.88"/><path d="M1 1l22 22"/></svg>';
@@ -342,13 +362,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderStep() {
     stepperEl.hidden = state.flow !== 'signup';
-    stepperEl.querySelectorAll('.auth-step-dot').forEach(dot => {
-      const order = ['plan', 'account', 'details'];
-      const dotIdx = order.indexOf(dot.dataset.step);
+    if (state.flow === 'signup') {
+      buildStepperDots();
+      const order = state.plan && state.plan.id !== 'free'
+        ? ['plan', 'account', 'payment', 'details']
+        : ['plan', 'account', 'details'];
       const curIdx = order.indexOf(state.step);
-      dot.classList.toggle('active', dot.dataset.step === state.step);
-      dot.classList.toggle('done', state.flow === 'signup' && dotIdx < curIdx);
-    });
+      stepperEl.querySelectorAll('.auth-step-dot').forEach(dot => {
+        const dotIdx = order.indexOf(dot.dataset.step);
+        dot.classList.toggle('active', dot.dataset.step === state.step);
+        dot.classList.toggle('done', dotIdx > -1 && dotIdx < curIdx);
+      });
+    }
 
     if (state.flow === 'signup' && state.step === 'plan') {
       modalEl.classList.add('wide');
@@ -376,14 +401,20 @@ document.addEventListener('DOMContentLoaded', () => {
     else if (state.flow === 'signup' && state.step === 'account') {
       modalEl.classList.remove('wide');
       const ref = getAffiliateRef();
+      const paid = state.plan.id !== 'free';
       bodyEl.innerHTML = `
-        <div class="auth-eyebrow">Step 2 of 3</div>
+        <div class="auth-eyebrow">Step 2 of ${paid ? '4' : '3'}</div>
         <h2 class="auth-title" id="authTitle">Create your account</h2>
         <div class="auth-plan-summary">
           <span>Plan: <b>${state.plan.name}</b> &mdash; ${state.plan.price} ${state.plan.suffix}</span>
           <button type="button" data-back-to="plan">Change plan</button>
         </div>
         ${ref ? `<div class="auth-hint ok" style="margin:-10px 0 16px;">Referred by <b>${ref}</b> &mdash; this account will be attributed to that partner.</div>` : ''}
+        <button type="button" class="btn btn-ghost auth-oauth" id="googleSignup">
+          <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.4 29.3 35 24 35c-6.1 0-11-4.9-11-11s4.9-11 11-11c2.8 0 5.3 1 7.3 2.7l6-6C33.5 6.5 29 4.5 24 4.5 13.2 4.5 4.5 13.2 4.5 24S13.2 43.5 24 43.5 43.5 34.8 43.5 24c0-1.2-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.6 15.9 18.9 13 24 13c2.8 0 5.3 1 7.3 2.7l6-6C33.5 6.5 29 4.5 24 4.5c-7.8 0-14.5 4.5-17.7 10.2z"/><path fill="#4CAF50" d="M24 43.5c5.1 0 9.7-2 13.2-5.2l-6.1-5.2C29.1 34.7 26.7 35.5 24 35.5c-5.2 0-9.6-3.5-11.2-8.3l-6.5 5C9.4 39 16.1 43.5 24 43.5z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.1-4.1 5.5l6.1 5.2C40.9 36 43.5 30.6 43.5 24c0-1.2-.1-2.4-.4-3.5z"/></svg>
+          Continue with Google
+        </button>
+        <div class="auth-divider"><span>or continue with email</span></div>
         <form id="accountForm" novalidate>
           <div class="auth-field">
             <label for="accUsername">Username</label>
@@ -407,6 +438,12 @@ document.addEventListener('DOMContentLoaded', () => {
       wirePasswordToggles();
       wireBackLinks();
       wireSwitchLinks();
+      // Demo only: no real OAuth is wired up, this simulates the account
+      // being created instantly and moves straight to the next real step.
+      document.getElementById('googleSignup').addEventListener('click', () => {
+        state.step = paid ? 'payment' : 'details';
+        renderStep();
+      });
       const form = document.getElementById('accountForm');
       form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -415,6 +452,80 @@ document.addEventListener('DOMContentLoaded', () => {
         clearHints(form);
         if (pw.value.length < 8) return showHint(pw, 'Use at least 8 characters.');
         if (pw.value !== pwc.value) return showHint(pwc, 'Passwords don\'t match.');
+        state.step = paid ? 'payment' : 'details';
+        renderStep();
+      });
+    }
+
+    else if (state.flow === 'signup' && state.step === 'payment') {
+      // Only reachable for Premium Monthly / Yearly. Free never routes here,
+      // renderStep() sends Free straight from account to details instead.
+      modalEl.classList.remove('wide');
+      const base = state.plan.amount;
+      const discount = appliedCoupon ? Math.round(base * appliedCoupon.rate * 100) / 100 : 0;
+      const total = (base - discount).toFixed(2);
+      bodyEl.innerHTML = `
+        <div class="auth-eyebrow">Step 3 of 4</div>
+        <h2 class="auth-title" id="authTitle">Payment details</h2>
+        <div class="auth-plan-summary">
+          <span>Plan: <b>${state.plan.name}</b> &mdash; ${state.plan.price} ${state.plan.suffix}</span>
+          <button type="button" data-back-to="account">Change plan</button>
+        </div>
+        <div class="coupon-row">
+          <input type="text" id="couponInput" placeholder="Coupon code" value="${appliedCoupon ? appliedCoupon.code : ''}" ${appliedCoupon ? 'disabled' : ''} />
+          <button type="button" class="btn btn-ghost" id="couponBtn">${appliedCoupon ? 'Remove' : 'Apply'}</button>
+        </div>
+        <div id="couponMsg"></div>
+        <div class="auth-order-summary">
+          <div class="auth-order-row"><span>${state.plan.name}</span><span>$${base.toFixed(2)}</span></div>
+          ${appliedCoupon ? `<div class="auth-order-row discount"><span>Coupon ${appliedCoupon.code}</span><span>&minus;$${discount.toFixed(2)}</span></div>` : ''}
+          <div class="auth-order-row total"><span>Total due today</span><span>$${total}</span></div>
+        </div>
+        <form id="paymentForm" novalidate>
+          <div class="auth-field">
+            <label for="cardName">Name on card</label>
+            <input type="text" id="cardName" autocomplete="cc-name" required />
+          </div>
+          <div class="auth-field">
+            <label for="cardNumber">Card number</label>
+            <input type="text" id="cardNumber" inputmode="numeric" autocomplete="cc-number" placeholder="1234 1234 1234 1234" required minlength="12" />
+          </div>
+          <div class="auth-card-row2">
+            <div class="auth-field">
+              <label for="cardExpiry">Expiry</label>
+              <input type="text" id="cardExpiry" autocomplete="cc-exp" placeholder="MM / YY" required />
+            </div>
+            <div class="auth-field">
+              <label for="cardCvc">CVC</label>
+              <input type="text" id="cardCvc" inputmode="numeric" autocomplete="cc-csc" placeholder="123" required minlength="3" maxlength="4" />
+            </div>
+          </div>
+          <div class="auth-actions">
+            <button type="button" class="btn auth-back" data-back-to="account">Back</button>
+            <button type="submit" class="btn btn-primary">Pay $${total}</button>
+          </div>
+          <div class="auth-secure-note">&#128274; Payment is a prototype form only, no real card processing.</div>
+        </form>
+      `;
+      wireBackLinks();
+      const couponBtn = document.getElementById('couponBtn');
+      couponBtn.addEventListener('click', () => {
+        const msgEl = document.getElementById('couponMsg');
+        if (appliedCoupon) {
+          appliedCoupon = null;
+          renderStep();
+          return;
+        }
+        const code = document.getElementById('couponInput').value.trim().toUpperCase();
+        if (COUPONS[code]) {
+          appliedCoupon = { code, rate: COUPONS[code] };
+          renderStep();
+        } else {
+          msgEl.innerHTML = `<p class="coupon-msg err">That code isn't valid. Try JSS10.</p>`;
+        }
+      });
+      document.getElementById('paymentForm').addEventListener('submit', (e) => {
+        e.preventDefault();
         state.step = 'details';
         renderStep();
       });
@@ -422,8 +533,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     else if (state.flow === 'signup' && state.step === 'details') {
       modalEl.classList.remove('wide');
+      const paid = state.plan.id !== 'free';
       bodyEl.innerHTML = `
-        <div class="auth-eyebrow">Step 3 of 3 &middot; optional</div>
+        <div class="auth-eyebrow">Step ${paid ? '4 of 4' : '3 of 3'} &middot; optional</div>
         <h2 class="auth-title" id="authTitle">Tell us a bit more</h2>
         <p class="auth-sub">Totally optional — helps us point you at the right courses first. You can finish without answering.</p>
         <form id="detailsForm">
@@ -436,7 +548,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <input type="text" id="ref" placeholder="e.g. Discord, a friend, search" />
           </div>
           <div class="auth-actions">
-            <button type="button" class="btn auth-back" data-back-to="account">Back</button>
+            <button type="button" class="btn auth-back" data-back-to="${paid ? 'payment' : 'account'}">Back</button>
             <button type="submit" class="btn btn-primary">Finish</button>
           </div>
         </form>
@@ -569,6 +681,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function openAuth(startStep, planId) {
     state = { flow: 'signup', step: 'plan', plan: planId ? PLANS[planId] : null };
+    appliedCoupon = null;
     if (startStep === 'login') state = { flow: 'login', step: 'login', plan: null };
     else if (planId) { state.step = 'account'; }
     overlay.hidden = false;
