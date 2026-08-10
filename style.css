@@ -1528,6 +1528,7 @@ footer {
   margin-bottom: 11px;
   font-size: 14px;
   color: #9fb2cc;
+  overflow-wrap: anywhere;
 }
 .foot > div > a:hover {
   color: var(--blue-light);
@@ -1634,6 +1635,10 @@ footer {
   }
   section {
     padding: 60px 0;
+  }
+  .foot {
+    grid-template-columns: 1fr;
+    gap: 28px;
   }
   .menu {
     position: absolute;
@@ -3524,6 +3529,9 @@ footer {
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
+.camp-skills-tabs.cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
 .camp-skills-tab {
   background: var(--white);
   border: 1px solid var(--line);
@@ -3683,7 +3691,7 @@ footer {
 
 @media (max-width: 1080px) {
   .camp-overview-grid { grid-template-columns: 1fr; }
-  .camp-skills-tabs { grid-template-columns: 1fr; }
+  .camp-skills-tabs, .camp-skills-tabs.cols-3 { grid-template-columns: 1fr; }
 }
 @media (max-width: 760px) {
   .camp-outcomes-list { grid-template-columns: 1fr; }
