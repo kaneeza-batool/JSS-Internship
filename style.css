@@ -61,6 +61,7 @@
 }
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 body {
   font-family: var(--font-body);
@@ -2755,6 +2756,92 @@ footer {
 }
 .auth-plan-summary button:hover {
   text-decoration: underline;
+}
+
+/* Sign up with Google + divider — Account step, added per mentor request */
+.auth-oauth {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.auth-oauth svg { flex-shrink: 0; }
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 18px;
+  color: var(--slate-2);
+  font-size: 12.5px;
+}
+.auth-divider::before,
+.auth-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+/* Payment step — only reached for Premium Monthly / Yearly, never Free */
+.auth-order-summary {
+  background: var(--ice-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  padding: 16px 18px;
+  margin-bottom: 20px;
+}
+.auth-order-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13.5px;
+  color: var(--text);
+  padding: 5px 0;
+}
+.auth-order-row.total {
+  border-top: 1px solid var(--line);
+  margin-top: 8px;
+  padding-top: 10px;
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 14.5px;
+}
+.auth-order-row .discount {
+  color: #2fa86b;
+}
+.coupon-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.coupon-row input {
+  flex: 1;
+}
+.coupon-row .btn {
+  flex-shrink: 0;
+  padding: 0 18px;
+  font-size: 13.5px;
+}
+.coupon-msg {
+  font-size: 12.5px;
+  margin: -12px 0 20px;
+}
+.coupon-msg.ok { color: #2fa86b; }
+.coupon-msg.err { color: #c0392b; }
+.auth-card-row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.auth-secure-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--slate-2);
+  margin-top: 4px;
+  justify-content: center;
 }
 
 .auth-done {
