@@ -792,4 +792,16 @@ document.addEventListener('DOMContentLoaded', () => {
       ripple.addEventListener('animationend', () => ripple.remove());
     });
   });
+
+  /* ---------- Campaign page sticky CTA bar ---------- */
+  const stickyCta = document.getElementById('stickyCta');
+  if (stickyCta) {
+    const heroEl = document.querySelector('.camp-hero');
+    const onCampScroll = () => {
+      const threshold = heroEl ? heroEl.offsetTop + heroEl.offsetHeight : 500;
+      stickyCta.classList.toggle('show', window.scrollY > threshold);
+    };
+    window.addEventListener('scroll', onCampScroll, { passive: true });
+    onCampScroll();
+  }
 });
