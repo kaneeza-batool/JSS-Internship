@@ -3697,3 +3697,4 @@ footer {
   .camp-outcomes-list { grid-template-columns: 1fr; }
   .camp-course-detail-head { flex-direction: column; }
 }
+.filter-toolbar{display:flex;flex-wrap:wrap;gap:22px 28px;align-items:flex-start;margin-bottom:28px}.filter-toolbar>div{display:flex;flex-direction:column;gap:8px}.filter-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--slate)}

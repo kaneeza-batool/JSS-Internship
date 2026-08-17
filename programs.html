@@ -83,20 +83,46 @@
         <h2 class="sec-title">Choose a guided career path</h2>
         <p class="sec-sub">A complete, ordered sequence of courses built around one job outcome.</p>
 
-        <div class="chip-filter" id="programFilter">
-          <button type="button" class="active" data-filter="all">All programs</button>
-          <button type="button" data-filter="beginner">Beginner</button>
-          <button type="button" data-filter="intermediate">Intermediate</button>
-          <button type="button" data-filter="advanced">Advanced</button>
+        <div class="filter-toolbar" id="programFilters">
+          <div>
+            <span class="filter-label">Track</span>
+            <div class="chip-filter" data-ftype="track">
+              <button type="button" class="active" data-filter="all">All tracks</button>
+              <button type="button" data-filter="support">IT Support</button>
+              <button type="button" data-filter="security">Cybersecurity</button>
+              <button type="button" data-filter="networking">Networking</button>
+              <button type="button" data-filter="cloud">Cloud</button>
+              <button type="button" data-filter="ai">AI</button>
+              <button type="button" data-filter="freelance">Freelance</button>
+              <button type="button" data-filter="data">Data</button>
+            </div>
+          </div>
+          <div>
+            <span class="filter-label">Level</span>
+            <div class="chip-filter" data-ftype="level">
+              <button type="button" class="active" data-filter="all">All levels</button>
+              <button type="button" data-filter="beginner">Beginner</button>
+              <button type="button" data-filter="intermediate">Intermediate</button>
+              <button type="button" data-filter="advanced">Advanced</button>
+            </div>
+          </div>
+          <div>
+            <span class="filter-label">Delivery</span>
+            <div class="chip-filter" data-ftype="delivery">
+              <button type="button" class="active" data-filter="all">Any delivery</button>
+              <button type="button" data-filter="self-paced">Self-paced</button>
+              <button type="button" data-filter="live">Live / recorded cohort</button>
+            </div>
+          </div>
         </div>
 
         <div class="full-prog-grid" id="fullProgGrid">
-          <div class="full-prog tilt" data-level="beginner">
+          <div class="full-prog tilt" data-level="beginner" data-track="support" data-delivery="self-paced">
             <div class="badge-row"><span class="badge badge-popular">Popular</span></div>
             <div class="icon">&#128421;</div>
             <h3>IT Support Certificate Program</h3>
             <p class="desc">Expertise for Help Desk, Service Desk, and IT Support roles.</p>
-            <div class="meta"><span class="tag lvl">Beginner</span><span class="tag">5 courses</span><span class="tag">~98 hrs</span></div>
+            <div class="meta"><span class="tag lvl">Beginner</span><span class="tag">5 courses</span><span class="tag">~56 hrs</span></div>
             <ul class="learn">
               <li>DNS, DHCP &amp; Active Directory</li>
               <li>Workstation setup &amp; troubleshooting</li>
@@ -106,14 +132,15 @@
               <a class="btn btn-ghost" href="#" data-open-auth="plan" data-plan="free">Start free</a>
               <a class="btn btn-primary" href="campaign-it-support.html">Explore program</a>
             </div>
+            <a class="camp-link" href="campaign-it-support.html">View campaign page &rarr;</a>
           </div>
 
-          <div class="full-prog tilt" data-level="intermediate">
+          <div class="full-prog tilt" data-level="intermediate" data-track="security" data-delivery="self-paced">
             <div class="badge-row"><span class="badge badge-new">In-demand</span></div>
             <div class="icon">&#128274;</div>
             <h3>Cybersecurity Analyst Certificate Program</h3>
             <p class="desc">Advance your career in cybersecurity, from Security+ to incident response.</p>
-            <div class="meta"><span class="tag lvl">Intermediate</span><span class="tag">5 courses</span><span class="tag">~115 hrs</span></div>
+            <div class="meta"><span class="tag lvl">Intermediate</span><span class="tag">5 courses</span><span class="tag">~109 hrs</span></div>
             <ul class="learn">
               <li>Security+ 701 fundamentals</li>
               <li>Risk management frameworks</li>
@@ -123,13 +150,14 @@
               <a class="btn btn-ghost" href="#" data-open-auth="plan" data-plan="free">Start free</a>
               <a class="btn btn-primary" href="campaign-cybersecurity.html">Explore program</a>
             </div>
+            <a class="camp-link" href="campaign-cybersecurity.html">View campaign page &rarr;</a>
           </div>
 
-          <div class="full-prog tilt" data-level="intermediate">
+          <div class="full-prog tilt" data-level="intermediate" data-track="networking,support" data-delivery="self-paced">
             <div class="icon">&#128736;</div>
             <h3>Systems Engineer Certificate Program</h3>
             <p class="desc">Build a foundation for Sysadmin and Junior Systems Engineer roles.</p>
-            <div class="meta"><span class="tag lvl">Intermediate</span><span class="tag">5 courses</span><span class="tag">~110 hrs</span></div>
+            <div class="meta"><span class="tag lvl">Intermediate</span><span class="tag">5 courses</span><span class="tag">~92 hrs</span></div>
             <ul class="learn">
               <li>Cisco IOS &amp; Wireshark</li>
               <li>Windows Server administration</li>
@@ -137,15 +165,16 @@
             </ul>
             <div class="full-prog-foot">
               <a class="btn btn-ghost" href="#" data-open-auth="plan" data-plan="free">Start free</a>
-              <a class="btn btn-primary" href="#" data-open-auth="plan">Explore program</a>
+              <a class="btn btn-primary" href="campaign-systems-engineer.html">Explore program</a>
             </div>
+            <a class="camp-link" href="campaign-systems-engineer.html">View campaign page &rarr;</a>
           </div>
 
-          <div class="full-prog tilt" data-level="advanced">
+          <div class="full-prog tilt" data-level="advanced" data-track="cloud" data-delivery="self-paced">
             <div class="icon">&#9729;</div>
             <h3>Azure Cloud Engineer Certificate Program</h3>
             <p class="desc">Become a Microsoft-certified Cloud Engineer.</p>
-            <div class="meta"><span class="tag lvl">Advanced</span><span class="tag">2 courses</span><span class="tag">~120 hrs</span></div>
+            <div class="meta"><span class="tag lvl">Advanced</span><span class="tag">2 courses</span><span class="tag">~45 hrs</span></div>
             <ul class="learn">
               <li>Microsoft Azure fundamentals</li>
               <li>Azure Active Directory</li>
@@ -153,27 +182,82 @@
             </ul>
             <div class="full-prog-foot">
               <a class="btn btn-ghost" href="#" data-open-auth="plan" data-plan="free">Start free</a>
-              <a class="btn btn-primary" href="#" data-open-auth="plan">Explore program</a>
+              <a class="btn btn-primary" href="campaign-azure-cloud-engineer.html">Explore program</a>
             </div>
+            <a class="camp-link" href="campaign-azure-cloud-engineer.html">View campaign page &rarr;</a>
           </div>
 
-          <div class="full-prog tilt" data-level="advanced">
+          <div class="full-prog tilt" data-level="advanced" data-track="cloud" data-delivery="self-paced">
             <div class="icon">&#9729;</div>
             <h3>AWS Cloud Engineer Certificate Program</h3>
             <p class="desc">Become AWS-certified with hands-on infrastructure practice.</p>
-            <div class="meta"><span class="tag lvl">Advanced</span><span class="tag">4 courses</span><span class="tag">~130 hrs</span></div>
+            <div class="meta"><span class="tag lvl">Advanced</span><span class="tag">3 courses</span><span class="tag">~36 hrs</span></div>
             <ul class="learn">
               <li>AWS core services</li>
               <li>DevOps on AWS</li>
-              <li>Route 53 &amp; networking</li>
+              <li>IAM &amp; networking</li>
             </ul>
             <div class="full-prog-foot">
               <a class="btn btn-ghost" href="#" data-open-auth="plan" data-plan="free">Start free</a>
-              <a class="btn btn-primary" href="#" data-open-auth="plan">Explore program</a>
+              <a class="btn btn-primary" href="campaign-aws-cloud-engineer.html">Explore program</a>
             </div>
+            <a class="camp-link" href="campaign-aws-cloud-engineer.html">View campaign page &rarr;</a>
           </div>
 
-          <div class="full-prog tilt" data-level="intermediate">
+          <div class="full-prog tilt" data-level="intermediate" data-track="networking,security" data-delivery="self-paced">
+            <div class="icon">&#128225;</div>
+            <h3>Cisco Network Engineer Certificate Program</h3>
+            <p class="desc">Become a certified Cisco Network Engineer, ready for the CCNA exam.</p>
+            <div class="meta"><span class="tag lvl">Intermediate</span><span class="tag">3 courses</span><span class="tag">~68 hrs</span></div>
+            <ul class="learn">
+              <li>Cisco routers, switches &amp; Packet Tracer</li>
+              <li>Subnetting &amp; VLANs</li>
+              <li>CCNA (200-301) exam prep</li>
+            </ul>
+            <div class="full-prog-foot">
+              <a class="btn btn-ghost" href="#" data-open-auth="plan" data-plan="free">Start free</a>
+              <a class="btn btn-primary" href="campaign-cisco-network-engineer.html">Explore program</a>
+            </div>
+            <a class="camp-link" href="campaign-cisco-network-engineer.html">View campaign page &rarr;</a>
+          </div>
+
+          <div class="full-prog tilt" data-level="beginner" data-track="ai" data-delivery="live">
+            <div class="badge-row"><span class="badge badge-new">In development</span></div>
+            <div class="icon">&#129302;</div>
+            <h3>AI Engineering Certificate Program</h3>
+            <p class="desc">Master Python programming and foundational AI engineering skills.</p>
+            <div class="meta"><span class="tag lvl">Beginner</span><span class="tag">1 course</span><span class="tag">~31 hrs</span></div>
+            <ul class="learn">
+              <li>Python programming basics</li>
+              <li>Automation scripting</li>
+              <li>Intro to AI applications</li>
+            </ul>
+            <div class="full-prog-foot">
+              <a class="btn btn-ghost" href="#" data-open-auth="plan" data-plan="free">Start free</a>
+              <a class="btn btn-primary" href="campaign-ai-engineering.html">Explore program</a>
+            </div>
+            <a class="camp-link" href="campaign-ai-engineering.html">View campaign page &rarr;</a>
+          </div>
+
+          <div class="full-prog tilt" data-level="intermediate" data-track="freelance" data-delivery="self-paced">
+            <div class="badge-row"><span class="badge badge-new">In development</span></div>
+            <div class="icon">&#128188;</div>
+            <h3>Become a Freelancer | Skills-to-Income Program</h3>
+            <p class="desc">Transform your skills into a sustainable freelance career.</p>
+            <div class="meta"><span class="tag lvl">Intermediate</span><span class="tag">2 courses</span><span class="tag">~15 hrs</span></div>
+            <ul class="learn">
+              <li>Fiverr, Upwork &amp; LinkedIn playbook</li>
+              <li>Pricing &amp; client acquisition</li>
+              <li>Personal branding &amp; outreach</li>
+            </ul>
+            <div class="full-prog-foot">
+              <a class="btn btn-ghost" href="#" data-open-auth="plan" data-plan="free">Start free</a>
+              <a class="btn btn-primary" href="campaign-freelancer.html">Explore program</a>
+            </div>
+            <a class="camp-link" href="campaign-freelancer.html">View campaign page &rarr;</a>
+          </div>
+
+          <div class="full-prog tilt" data-level="intermediate" data-track="data" data-delivery="self-paced">
             <div class="icon">&#128202;</div>
             <h3>Data Analytics Certificate Program</h3>
             <p class="desc">Learn to turn raw data into decisions employers can use.</p>
@@ -189,6 +273,7 @@
             </div>
           </div>
         </div>
+        <div class="no-results" id="noProgResults">No programs match these filters — try a broader track, level, or delivery option.</div>
       </div>
     </section>
 
@@ -209,6 +294,7 @@
             <button type="button" data-filter="support">IT Support</button>
             <button type="button" data-filter="cloud">Cloud</button>
             <button type="button" data-filter="security">Security</button>
+            <button type="button" data-filter="ai">AI</button>
             <button type="button" data-filter="career">Career prep</button>
           </div>
         </div>
@@ -278,12 +364,20 @@
               <div class="course-foot"><span class="course-len">6h · 20 lessons</span></div>
             </div>
           </div>
-          <div class="course-card tilt" data-cat="career">
+          <div class="course-card tilt" data-cat="career,freelance">
             <div class="course-thumb"><span class="cplay">&#9654;</span><span class="free-tag">FREE</span><span class="vendor-tag">Career Prep</span></div>
             <div class="course-body">
               <h4>Freelancing — Sell Your Skills and Make Money Online</h4>
               <div class="course-tags"><span>Freelancing</span><span>Income</span></div>
-              <div class="course-foot"><span class="course-len">8h · 40 lessons</span></div>
+              <div class="course-foot"><span class="course-len">4h · 23 lessons</span></div>
+            </div>
+          </div>
+          <div class="course-card tilt" data-cat="ai">
+            <div class="course-thumb"><span class="cplay">&#9654;</span><span class="vendor-tag">Python</span></div>
+            <div class="course-body">
+              <h4>Python Fundamentals — AI Engineering</h4>
+              <div class="course-tags"><span>Python</span><span>Automation</span></div>
+              <div class="course-foot"><span class="course-len">31h · 20 lessons</span></div>
             </div>
           </div>
         </div>
@@ -337,7 +431,7 @@
             <p style="margin-top: 10px; max-width: 280px">Join 60,000+ members from 120+ countries.</p>
             <a class="aff-link" href="https://www.jobskillshare.org/certificate-program?ref=kaneeza-batool" target="_blank" rel="noopener">&#9733; Enroll on JobSkillShare.org &rarr;</a>
           </div>
-          <div><h4>Programs</h4><a href="#program-directory">IT Support</a><a href="#program-directory">Systems Engineer</a><a href="#program-directory">Cloud Engineer</a><a href="#program-directory">Cybersecurity</a></div>
+          <div><h4>Programs</h4><a href="campaign-it-support.html">IT Support</a><a href="campaign-cybersecurity.html">Cybersecurity</a><a href="campaign-systems-engineer.html">Systems Engineer</a><a href="campaign-cisco-network-engineer.html">Cisco Networking</a><a href="campaign-azure-cloud-engineer.html">Azure Cloud Engineer</a><a href="campaign-aws-cloud-engineer.html">AWS Cloud Engineer</a><a href="campaign-ai-engineering.html">AI Engineering</a><a href="campaign-freelancer.html">Become a Freelancer</a></div>
           <div><h4>Company</h4><a href="#">Mission</a><a href="membership.html">Membership</a><a href="#">Free Interview Prep</a><a href="#">Terms</a></div>
           <div><h4>Support</h4><a href="#">support@jobskillshare.org</a><a href="#">sales@jobskillshare.org</a><a href="#">Community Discord</a></div>
         </div>

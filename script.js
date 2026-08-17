@@ -180,22 +180,39 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---------- Program level filter (Programs page) ---------- */
-  const programChips = document.getElementById('programFilter');
-  const fullGrid = document.querySelector('.full-prog-grid');
-  if (programChips && fullGrid) {
-    const chips = programChips.querySelectorAll('button');
-    chips.forEach(chip => {
-      chip.addEventListener('click', () => {
-        chips.forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-        const filter = chip.dataset.filter;
-        fullGrid.querySelectorAll('.full-prog').forEach(card => {
-          const show = filter === 'all' || card.dataset.level === filter;
-          card.style.display = show ? '' : 'none';
+  /* ---------- Program Track / Level / Delivery filters (Programs page) ---------- */
+  const progGrid = document.querySelector('.full-prog-grid');
+  const progFilterGroups = document.querySelectorAll('#programFilters .chip-filter');
+  const noProgResults = document.getElementById('noProgResults');
+  if (progGrid && progFilterGroups.length) {
+    const applyProgFilters = () => {
+      const active = {};
+      progFilterGroups.forEach(group => {
+        const btn = group.querySelector('button.active');
+        active[group.dataset.ftype] = btn ? btn.dataset.filter : 'all';
+      });
+      let visible = 0;
+      progGrid.querySelectorAll('.full-prog').forEach(card => {
+        const okLevel = active.level === 'all' || card.dataset.level === active.level;
+        const tracks = (card.dataset.track || '').split(',');
+        const okTrack = active.track === 'all' || tracks.includes(active.track);
+        const okDelivery = active.delivery === 'all' || card.dataset.delivery === active.delivery;
+        const show = okLevel && okTrack && okDelivery;
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      if (noProgResults) noProgResults.classList.toggle('show', visible === 0);
+    };
+    progFilterGroups.forEach(group => {
+      group.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          group.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          applyProgFilters();
         });
       });
     });
+    applyProgFilters();
   }
 
   /* ---------- Course search + category filter (Programs page) ---------- */
