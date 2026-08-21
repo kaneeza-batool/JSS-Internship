@@ -69,7 +69,6 @@ body {
   background: var(--white);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 body.modal-open {
   overflow: hidden;
@@ -223,12 +222,16 @@ p {
 
 /* on dark navy backgrounds, ghost buttons flip to light */
 .hero .btn-ghost,
-.final .btn-ghost {
+.final .btn-ghost,
+.page-hero .btn-ghost,
+.camp-hero .btn-ghost {
   color: var(--white);
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 .hero .btn-ghost:hover,
-.final .btn-ghost:hover {
+.final .btn-ghost:hover,
+.page-hero .btn-ghost:hover,
+.camp-hero .btn-ghost:hover {
   border-color: var(--white);
   background: rgba(255, 255, 255, 0.08);
   color: var(--white);
@@ -858,6 +861,58 @@ section {
   transform: translateX(-50%) translateY(-2px);
 }
 
+/* ---------------- Programs vs. Courses compare ---------------- */
+.path-compare {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+.path-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  padding: 30px 28px;
+  box-shadow: var(--shadow-s);
+  transition:
+    transform 0.25s var(--ease-pop),
+    box-shadow 0.25s ease;
+}
+.path-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--glow);
+}
+.path-card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+.path-card > p {
+  font-size: 14px;
+  color: var(--slate);
+  margin-bottom: 18px;
+}
+.path-card ul {
+  margin-bottom: 20px;
+}
+.path-card ul li {
+  font-size: 13.5px;
+  color: var(--text);
+  padding-left: 22px;
+  position: relative;
+  margin-bottom: 9px;
+}
+.path-card ul li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--blue);
+  font-weight: 700;
+}
+@media (max-width: 760px) {
+  .path-compare {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---------------- Coming soon strip ---------------- */
 .soon .box {
   background: linear-gradient(120deg, var(--navy), var(--navy-2));
@@ -1147,7 +1202,7 @@ section {
   grid-template-columns: repeat(3, 1fr);
   gap: 22px;
 }
-.quote {
+.quotes .quote {
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: var(--radius-m);
@@ -1158,14 +1213,14 @@ section {
     box-shadow 0.35s var(--ease),
     border-color 0.25s var(--ease-soft);
 }
-.quote:hover {
+.quotes .quote:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-m);
 }
-.quote:nth-child(2) .av {
+.quotes .quote:nth-child(2) .av {
   background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
 }
-.quote p {
+.quotes .quote p {
   color: var(--text);
   font-size: 14.5px;
   margin-bottom: 20px;
@@ -1991,6 +2046,18 @@ footer {
   border-radius: 16px;
   margin-bottom: 20px;
 }
+.full-prog .kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--blue-dark);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
 .full-prog .badge-row {
   position: absolute;
   top: 26px;
@@ -2267,6 +2334,22 @@ footer {
   font-size: 10px;
   font-weight: 700;
   padding: 4px 9px;
+  border-radius: 6px;
+  z-index: 1;
+}
+.course-thumb .type-tag {
+  position: absolute;
+  top: 11px;
+  left: 11px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: var(--white);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 4px 8px;
   border-radius: 6px;
   z-index: 1;
 }
@@ -3640,6 +3723,11 @@ footer {
   border-radius: 999px;
 }
 
+.camp-review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
 .camp-review-card {
   background: linear-gradient(150deg, var(--navy), var(--navy-2));
   border-radius: var(--radius-l);
@@ -3647,6 +3735,25 @@ footer {
   color: var(--white);
   max-width: 640px;
   margin: 0 auto;
+}
+.camp-review-grid .camp-review-card {
+  max-width: none;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.camp-review-grid .camp-review-card p.quote {
+  flex: 1;
+}
+@media (max-width: 1080px) {
+  .camp-review-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 760px) {
+  .camp-review-grid {
+    grid-template-columns: 1fr;
+  }
 }
 .camp-review-head {
   display: flex;
